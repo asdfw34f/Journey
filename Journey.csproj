@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Travelling.png" />
+    <None Remove="Assets\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Models\" />
+    <Folder Include="MVVM\ViewModels\" />
+    <Folder Include="Res\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Travelling.png" />
+    <Resource Include="Assets\User.png" />
+  </ItemGroup>
+
+</Project>
