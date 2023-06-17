@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Journey"
+        xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
         mc:Ignorable="d"
         Height="650" Width="1200"
         WindowState="Maximized"
-        Title="Вход в учётную запись">
+        Title="Вход в учётную запись"
+        d:DataContext="{d:DesignInstance Type=vm:AuthViewModel}">
+    
     <Window.Resources>
         <ResourceDictionary Source="NewButton.xaml"/>
 
@@ -53,6 +56,7 @@
                    Foreground="#FF525A28"/>
 
             <TextBox x:Name="LoginBox" 
+                     Text="{Binding Login}"
                      Width="185" 
                      Height="35" 
                      Margin="10, 0, 10, 10" 
@@ -71,7 +75,9 @@
                      BorderThickness="0"
                    FontWeight="Bold" 
                    Foreground="#FF525A28"/>
+            
             <PasswordBox x:Name="passwordBox"
+                         PasswordChanged="passwordBox_PasswordChanged"
                      Width="185" 
                      Height="35" 
                      Margin="10, 0, 10, 10" 

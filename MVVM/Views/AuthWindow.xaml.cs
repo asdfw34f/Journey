@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Journey;
+using Journey.MVVM.ViewModels;
 
 namespace Journey.MVVM.Views
 {
@@ -8,9 +9,17 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class AuthWindow : Window
     {
+        AuthViewModel context;
         public AuthWindow()
         {
+            context = new AuthViewModel();
+            DataContext = context;
             InitializeComponent();
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            context.Password = passwordBox.Password;
         }
     }
 }
