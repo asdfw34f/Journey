@@ -11,10 +11,7 @@
         Title="Вход в учётную запись"
         d:DataContext="{d:DesignInstance Type=vm:AuthViewModel}">
 
-    <Window.Resources>
-        <ResourceDictionary Source="NewButton.xaml"/>
 
-    </Window.Resources>
 
     <Grid>
         <Grid.Background>
@@ -37,123 +34,5 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-
-        <StackPanel 
-            Grid.Column="1"
-            Grid.ColumnSpan="1" Margin="1,100,2,99" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-            <Image Height="150" 
-                   Width="150"
-                   Source="/Assets/User.png"
-                   Margin="0, 0, 0, 20"
-                   StretchDirection="DownOnly"
-                   Opacity="0.9" 
-                   SnapsToDevicePixels="True"/>
-
-            <Label Content="Логин" 
-                     Width="240" 
-                     Height="25" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="12"
-                     BorderThickness="0"
-                   FontWeight="Bold" 
-                   Foreground="#FF0F2B50"/>
-
-            <TextBox x:Name="LoginBox" 
-                     Text="{Binding Login}"
-                     Width="240" 
-                     Height="40" 
-                     Margin="10, 0, 10, 10" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     MaxLines="1" 
-                     MaxLength="45"
-                     BorderThickness="0"
-                     BorderBrush="Black">
-                <TextBox.Background>
-                    <SolidColorBrush Color="White" Opacity="0.6"/>
-                </TextBox.Background>
-            </TextBox>
-
-            <Label Content="Пароль" 
-                     Width="240" 
-                     Height="25" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="12"
-                     BorderThickness="0"
-                   FontWeight="Bold" 
-                   Foreground="#FF0F2B50"/>
-
-            <PasswordBox x:Name="passwordBox"
-                         PasswordChanged="passwordBox_PasswordChanged"
-                     Width="240" 
-                     Height="40" 
-                     Margin="10, 0, 10, 0" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     MaxLength="45"
-                     BorderThickness="0"
-                     BorderBrush="Black">
-                <PasswordBox.Background>
-                    <SolidColorBrush Color="White" Opacity="0.6"/>
-                </PasswordBox.Background>
-            </PasswordBox>
-            
-            <Label 
-                Margin="0"
-                Padding="0"
-                     Width="300" 
-                     Height="30" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="12"
-                     BorderThickness="0"
-                   FontWeight="Bold" 
-                   Foreground="#FF0F2B50"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    HorizontalContentAlignment="Center">
-                <Label.Content>
-                    <TextBlock FontSize="14"
-                               FontWeight="Normal" 
-                               TextWrapping="WrapWithOverflow" 
-                               TextAlignment="Justify" FontStyle="Italic">
-                        Нажмите
-                        <Run TextDecorations="Underline" 
-                             FontWeight="Bold"
-                             Cursor="Hand">
-                            сюда
-                        </Run>
-                        для регистрации
-                    </TextBlock>
-                </Label.Content>
-            </Label>
-            <Button x:Name="EnterBTN" 
-                    Margin="5, 35, 5, 20"
-                    Height="30"
-                Template="{StaticResource ButtonTemplate}"
-                    Width="150"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                <Button.Background>
-                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                </Button.Background>
-                <Button.Content>
-                    <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="SemiBold"
-                               FontSize="16" 
-                               FontFamily="Maiandra GD" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Войти</TextBlock>
-                </Button.Content>
-            </Button>
-
-        </StackPanel>
     </Grid>
 </Window>
