@@ -3,15 +3,15 @@
                     x:Name="NewButton">
     
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
-        <Border BorderBrush="Green" BorderThickness="3" CornerRadius="10"
+        <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="10"
                     TextBlock.Foreground="White" 
                 TextBlock.TextAlignment="Center"
                 TextBlock.FontSize="14" TextBlock.FontStyle="Normal" Padding="1">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStopCollection>
-                        <GradientStop Offset="0" Color="LimeGreen"></GradientStop>
-                        <GradientStop Offset="1" Color="GreenYellow"></GradientStop>
+                        <GradientStop Offset="1" Color="Blue"></GradientStop>
+                        <GradientStop Offset="0" Color="#FF2FA4FF"></GradientStop>
                     </GradientStopCollection>
                 </LinearGradientBrush>
             </Border.Background>
