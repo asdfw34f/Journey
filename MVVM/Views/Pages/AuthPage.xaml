@@ -9,8 +9,7 @@
       Title="AuthPage">
     
     <Page.Resources>
-        <ResourceDictionary Source="NewButton.xaml"/>
-
+        <ResourceDictionary Source="/MVVM/Views/NewButton.xaml"/>
     </Page.Resources>
 
     <StackPanel 

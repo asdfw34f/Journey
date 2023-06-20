@@ -3,10 +3,8 @@
                     x:Name="NewButton">
     
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
-        <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="10"
-                    TextBlock.Foreground="White" 
-                TextBlock.TextAlignment="Center"
-                TextBlock.FontSize="14" TextBlock.FontStyle="Normal" Padding="1">
+        <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="10"
+                    TextBlock.Foreground="White">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStopCollection>
