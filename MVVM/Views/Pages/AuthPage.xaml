@@ -5,11 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Journey.MVVM.Views.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="500"
-      Title="AuthPage">
+      d:DesignHeight="900" 
+      d:DesignWidth="500"
+      Title="">
     
     <Page.Resources>
-        <ResourceDictionary Source="/MVVM/Views/NewButton.xaml"/>
+        <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Page.Resources>
 
     <StackPanel 
@@ -98,11 +99,12 @@
                                TextAlignment="Justify"
                                FontStyle="Italic">
                         Нажмите
-                        <Run TextDecorations="Underline" 
-                             FontWeight="Bold"
-                             Cursor="Hand">
+                        <Hyperlink TextDecorations="Underline" 
+                             FontWeight="Normal"
+                             Cursor="Hand"
+                                   NavigateUri="/MVVM/Views/Pages/RegisterPage.xaml">
                             сюда
-                        </Run>
+                        </Hyperlink>
                         для регистрации
                     </TextBlock>
                 </Label.Content>
