@@ -1,4 +1,10 @@
-﻿using Journey.MVVM.Base;
+﻿using Journey.Data;
+using Journey.Infrastructure.Commands;
+using Journey.MVVM.Base;
+using Journey.MVVM.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Journey.MVVM.ViewModels.Pages
@@ -30,23 +36,22 @@ namespace Journey.MVVM.ViewModels.Pages
         }
         private void OnEnter(object p)
         {
-
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                List<User> user = db.Users.Where(u => u.Password == Password && u.Email == Login).ToList();
+                if (user != null)
+                {
+                    MessageBox.Show("URA");
+                }
+            }
         }
-
-        public ICommand ChangePageCommand { get; }
-        private bool CanChangePageCommand(object p) => true;
-        private void OnChangePageCommand(object p)
-        {
-
-        }
-
-
-
 
         public AuthViewModel()
         {
             Login = string.Empty;
             Password = string.Empty;
+
+            EnterCommand = new LambdaCommand(OnEnter, CanEnter);
         }
 
     }

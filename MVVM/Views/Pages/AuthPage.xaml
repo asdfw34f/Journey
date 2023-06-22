@@ -4,10 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Journey.MVVM.Views.Pages"
+      xmlns:vm="clr-namespace:Journey.MVVM.ViewModels.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" 
       d:DesignWidth="500"
       Title="">
+    <Page.DataContext>
+        <vm:AuthViewModel/>
+    </Page.DataContext>
     
     <Page.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
@@ -109,7 +113,10 @@
                     </TextBlock>
                 </Label.Content>
             </Label>
-            <Button x:Name="EnterBTN" 
+        
+            <Button Command="{Binding EnterCommand}"
+                    Click="EnterBTN_Click"
+                x:Name="EnterBTN" 
                     Margin="5, 35, 5, 20"
                     Height="30"
                     Template="{StaticResource ButtonTemplate}"

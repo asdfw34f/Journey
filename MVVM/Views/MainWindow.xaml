@@ -10,7 +10,7 @@
         Height="650" Width="1200"
         WindowState="Maximized"
         Title="Вход в учётную запись"
-        d:DataContext="{d:DesignInstance Type=vm:AuthViewModel}">
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}">
 
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
