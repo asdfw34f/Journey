@@ -9,11 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Maps.png" />
     <None Remove="Assets\News.png" />
     <None Remove="Assets\Profile.png" />
     <None Remove="Assets\Ticket.png" />
     <None Remove="Assets\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Res\NewButton.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,11 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Maps.png" />
     <Resource Include="Assets\News.png" />
     <Resource Include="Assets\Profile.png" />
     <Resource Include="Assets\Ticket.png" />
     <Resource Include="Assets\User.png" />
+    <Resource Include="Res\NewButton.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

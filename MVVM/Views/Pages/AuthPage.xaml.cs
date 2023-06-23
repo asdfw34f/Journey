@@ -1,7 +1,6 @@
 ﻿using Journey.MVVM.ViewModels.Pages;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Journey.MVVM.Views.Pages
 {
@@ -22,11 +21,6 @@ namespace Journey.MVVM.Views.Pages
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
                 context.Password = passwordBox.Password;
-        }
-
-        private void EnterBTN_Click(object sender, RoutedEventArgs e)
-        {
-            Cursor = Cursors.Wait;
         }
     }
 }

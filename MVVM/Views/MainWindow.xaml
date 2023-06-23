@@ -6,17 +6,21 @@
         xmlns:local="clr-namespace:Journey"
         xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
         xmlns:pages="clr-namespace:Journey.MVVM.Views.Pages"
+        xmlns:contrls="clr-namespace:Journey.MVVM.Views.Controls"
         mc:Ignorable="d"
         Height="650" Width="1200"
         WindowState="Maximized"
         Title="Вход в учётную запись"
-        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}">
-
+        >
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
 
-    <Grid >
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" 
                                  StartPoint="0.5,0" 
@@ -30,13 +34,12 @@
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="155*"/>
-            <ColumnDefinition Width="889*"/>
-            <ColumnDefinition Width="75*"/>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="435*"/>
+            <ColumnDefinition Width="83*"/>
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="frame" 
+        <Frame x:Name="FrameMain" 
                Grid.Column="1" 
                NavigationUIVisibility="Hidden">
 
@@ -45,66 +48,10 @@
             </Frame.Content>
         </Frame>
 
-        <StackPanel Grid.Column="3" Cursor="" Margin="0,147,0,147">
 
-            <Button x:Name="Profel" 
-                    Height="75" 
-                    Margin="0, 5, 5, 5" 
-                    Padding="0"
-                    BorderThickness="0"
-                    HorizontalContentAlignment="Stretch" 
-                    VerticalContentAlignment="Stretch"
-                    Cursor="Hand">
-                <Button.Content >
-                    <Image Source="/Assets/Profile.png"/>
-                </Button.Content>
+        <contrls:Menu Grid.Column="0" 
+                      Visibility="{Binding MenuVis}"/>
 
-            </Button>
 
-            <Button x:Name="News" 
-                    Height="75" 
-                    Margin="0, 5, 5, 5"
-                    Padding="0"
-                    BorderThickness="0"
-                    HorizontalContentAlignment="Stretch" 
-                    VerticalContentAlignment="Stretch"
-                    Cursor="Hand">
-
-                <Button.Content >
-                    <Image Source="/Assets/News.png"/>
-                </Button.Content>
-            </Button>
-
-            <Button x:Name="Maps" 
-                    Height="75" 
-                    Margin="0, 5, 5, 5"
-                    BorderThickness="0"
-                    Padding="0" 
-                    HorizontalContentAlignment="Stretch" 
-                    VerticalContentAlignment="Stretch"
-                    Cursor="Hand">
-
-                <Button.Content >
-                    <Image
-                           Source="/Assets/Maps.png"/>
-                </Button.Content>
-            </Button>
-
-            <Button x:Name="Tickets" 
-                    Height="75" 
-                    Margin="0, 5, 5, 5"
-                    BorderThickness="0"
-                    Background="#FF74EFFF"
-                    Padding="0" 
-                    HorizontalContentAlignment="Stretch" 
-                    VerticalContentAlignment="Stretch"
-                    Cursor="Hand">
-
-                <Button.Content >
-                    <Image Source="/Assets/Ticket.png"/>
-                </Button.Content>
-            </Button>
-
-        </StackPanel>
     </Grid>
 </Window>

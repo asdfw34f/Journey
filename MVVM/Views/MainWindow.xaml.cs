@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using Journey;
-using Journey.MVVM.ViewModels;
 
 namespace Journey.MVVM.Views
 {

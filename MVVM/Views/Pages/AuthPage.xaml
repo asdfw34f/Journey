@@ -12,7 +12,7 @@
     <Page.DataContext>
         <vm:AuthViewModel/>
     </Page.DataContext>
-    
+
     <Page.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Page.Resources>
@@ -24,7 +24,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
-            <Image Height="150" 
+        <Image Height="150" 
                    Width="150"
                    Source="/Assets/User.png"
                    Margin="0, 0, 0, 20"
@@ -32,7 +32,7 @@
                    Opacity="0.9" 
                    SnapsToDevicePixels="True"/>
 
-            <Label Content="Логин" 
+        <Label Content="Логин" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -41,7 +41,7 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-            <TextBox x:Name="LoginBox" 
+        <TextBox x:Name="LoginBox" 
                      Text="{Binding Login}"
                      Width="240" 
                      Height="40" 
@@ -52,13 +52,13 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-                <TextBox.Background>
-                    <SolidColorBrush Color="White"
+            <TextBox.Background>
+                <SolidColorBrush Color="White"
                                      Opacity="0.6"/>
-                </TextBox.Background>
-            </TextBox>
+            </TextBox.Background>
+        </TextBox>
 
-            <Label Content="Пароль" 
+        <Label Content="Пароль" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -67,7 +67,7 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-            <PasswordBox x:Name="passwordBox"
+        <PasswordBox x:Name="passwordBox"
                          PasswordChanged="passwordBox_PasswordChanged"
                      Width="240" 
                      Height="40" 
@@ -77,13 +77,13 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-                <PasswordBox.Background>
-                    <SolidColorBrush Color="White" 
+            <PasswordBox.Background>
+                <SolidColorBrush Color="White" 
                                      Opacity="0.6"/>
-                </PasswordBox.Background>
-            </PasswordBox>
+            </PasswordBox.Background>
+        </PasswordBox>
 
-            <Label 
+        <Label 
                 Margin="0"
                 Padding="0"
                      Width="300" 
@@ -96,8 +96,8 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     HorizontalContentAlignment="Center">
-                <Label.Content>
-                    <TextBlock FontSize="14"
+            <Label.Content>
+                <TextBlock FontSize="14"
                                FontWeight="Normal" 
                                TextWrapping="WrapWithOverflow" 
                                TextAlignment="Justify"
@@ -110,37 +110,36 @@
                             сюда
                         </Hyperlink>
                         для регистрации
-                    </TextBlock>
-                </Label.Content>
-            </Label>
-        
-            <Button Command="{Binding EnterCommand}"
-                    Click="EnterBTN_Click"
+                </TextBlock>
+            </Label.Content>
+        </Label>
+
+        <Button Command="{Binding EnterCommand}"
                 x:Name="EnterBTN" 
-                    Margin="5, 35, 5, 20"
+                    Margin="5, 35, 5, 0"
                     Height="30"
                     Template="{StaticResource ButtonTemplate}"
                     Width="150"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" 
                     VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
                     FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                <Button.Background>
-                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                </Button.Background>
-                <Button.Content>
-                    <TextBlock HorizontalAlignment="Center"
+                    Cursor="Hand">
+            
+            <Button.Background>
+                <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
+            </Button.Background>
+            <Button.Content>
+                <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontWeight="SemiBold"
                                FontSize="16" 
                                FontFamily="Maiandra GD" 
                                Foreground="#FFDBE5F1" 
                                TextWrapping="WrapWithOverflow"
+                               Cursor="Hand"
                                >Войти</TextBlock>
-                </Button.Content>
-            </Button>
-        </StackPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel>
 </Page>
