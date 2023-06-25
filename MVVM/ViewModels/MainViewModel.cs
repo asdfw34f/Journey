@@ -1,18 +1,14 @@
 ﻿using Journey.MVVM.Base;
-using System.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Automation;
 
 namespace Journey.MVVM.ViewModels
 {
-    public class MainViewModel: NotifyPropertyChanged
+    class MainViewModel : NotifyPropertyChanged
     {
-        private Visibility _menuVis = Visibility.Collapsed;
-        
-        public Visibility MenuVis
-        {
-            get => _menuVis;
-            set => Set(ref _menuVis, value);
-        }
-
-        public MainViewModel() { }
     }
 }

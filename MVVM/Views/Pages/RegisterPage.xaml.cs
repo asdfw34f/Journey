@@ -22,5 +22,15 @@ namespace Journey.MVVM.Views.Pages
         {
 
         }
+
+        private void Label_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Navigate back one page from this page, if there is an entry
+            // in back navigation history
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+        }
     }
 }

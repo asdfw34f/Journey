@@ -1,57 +1,158 @@
 ﻿<Window x:Class="Journey.MVVM.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Journey"
-        xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
-        xmlns:pages="clr-namespace:Journey.MVVM.Views.Pages"
-        xmlns:contrls="clr-namespace:Journey.MVVM.Views.Controls"
-        mc:Ignorable="d"
-        Height="650" Width="1200"
-        WindowState="Maximized"
-        Title="Вход в учётную запись"
-        >
-    <Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Journey.MVVM.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1450"
+      >
     
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
-
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" 
-                                 StartPoint="0.5,0" 
-                                 SpreadMethod="Pad"
-                                 Opacity="0.7">
-                <GradientStop Color="#FF74EFFF"/>
-                <GradientStop Color="#FF001BFF" Offset="1"/>
-                <GradientStop Color="#FF00D6FF" Offset="0.709"/>
-                <GradientStop Color="#FF004AFF" Offset="0.931"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="83*"/>
-            <ColumnDefinition Width="435*"/>
-            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="24*"/>
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="FrameMain" 
-               Grid.Column="1" 
-               NavigationUIVisibility="Hidden">
-
-            <Frame.Content>
-                <pages:AuthPage/>
-            </Frame.Content>
-        </Frame>
+        <StackPanel Grid.Column="0" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"  >
 
 
-        <contrls:Menu Grid.Column="0" 
-                      Visibility="{Binding MenuVis}"/>
+            <DockPanel>
+                <Image Height="40"
+                   Width="40"
+                   Source="/Assets/Profile.png"/>
 
+                <Button 
+                x:Name="ProfileBtn" 
+                    Margin="5, 5, 5, 5"
+                    Height="40"
+                    Width="180"        
+                    Template="{StaticResource ButtonTemplate}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    FontStretch="UltraExpanded" 
+                    FontWeight="Bold" 
+                    Cursor="Hand"
+                    IsEnabled="True">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
+                    </Button.Background>
+                    <Button.Content>
+                        <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               FontSize="16" 
+                               FontFamily="Maiandra GD" 
+                               Foreground="#FFDBE5F1" 
+                               TextWrapping="WrapWithOverflow"
+                               >Профиль</TextBlock>
+                    </Button.Content>
+                </Button>
+
+            </DockPanel>
+
+            <DockPanel>
+                <Image Height="40"
+                   Width="40"
+                   Source="/Assets/News.png"/>
+                <Button 
+                x:Name="NewsBtn" 
+                    Height="40"
+                    Width="180"
+            Margin="5, 5, 5, 5"
+                    Template="{StaticResource ButtonTemplate}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    FontStretch="UltraExpanded" 
+                    FontWeight="Bold" 
+                    Cursor="Hand"
+                    IsEnabled="True">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
+                    </Button.Background>
+                    <Button.Content>
+                        <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               FontSize="16" 
+                               FontFamily="Maiandra GD" 
+                               Foreground="#FFDBE5F1" 
+                               TextWrapping="WrapWithOverflow"
+                               >Новости</TextBlock>
+                    </Button.Content>
+                </Button>
+            </DockPanel>
+
+            <DockPanel>
+                <Image Height="40"
+                   Width="40"
+                   Source="/Assets/Ticket.png"/>
+                <Button 
+                x:Name="BuyBtn" 
+                    Margin="5, 5, 5, 5"
+                    Height="40"
+                    Width="180"
+                    Template="{StaticResource ButtonTemplate}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    FontStretch="UltraExpanded" 
+                    FontWeight="Bold" 
+                    Cursor="Hand"
+                    IsEnabled="True">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
+                    </Button.Background>
+                    <Button.Content>
+                        <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               FontSize="16" 
+                               FontFamily="Maiandra GD" 
+                               Foreground="#FFDBE5F1" 
+                               TextWrapping="WrapWithOverflow"
+                               >Билеты</TextBlock>
+                    </Button.Content>
+                </Button>
+            </DockPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="463,238,463,238">
+
+            <Image Height="150"
+                   Width="150"
+                   Margin="25"
+                   >
+            </Image>
+
+            <Label Content="Фамилия" 
+                     Width="200" 
+                     Height="35" 
+                     VerticalContentAlignment="Center" 
+                     Margin="15, 30, 15, 5"
+                     FontSize="16"
+                     BorderThickness="0" 
+                   Foreground="Black" 
+                   FontFamily="Dubai Medium"/>
+
+            <Label Content="Имя" 
+                   Margin="15, 5, 15, 15"
+                     Width="200" 
+                     Height="35" 
+                     VerticalContentAlignment="Center" 
+                     FontSize="16"
+                     BorderThickness="0"
+                   Foreground="Black" 
+                   FontFamily="Dubai Medium"/>
+        </StackPanel>
 
     </Grid>
 </Window>

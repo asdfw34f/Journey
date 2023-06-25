@@ -1,7 +1,7 @@
 ﻿using Journey.MVVM.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Journey.Data
+namespace Journey.Data.MSSQL
 {
     public class ApplicationContext : DbContext
     {

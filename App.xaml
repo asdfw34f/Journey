@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Journey"
-             StartupUri="./MVVM/Views/MainWindow.xaml">
+             xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
+             xmlns:v="clr-namespace:Journey.MVVM.Views"
+             StartupUri="./MVVM/Views/LogWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type vm:MainViewModel}">
+            <v:MainWindow/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
