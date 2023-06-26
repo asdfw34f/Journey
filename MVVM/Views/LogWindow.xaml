@@ -104,7 +104,7 @@
 
                     <PasswordBox x:Name="passwordBox"
                          PasswordChanged="passwordBox_PasswordChanged"
-                     Width="240" 
+                                 Width="240" 
                      Height="40" 
                      Margin="10, 0, 10, 0" 
                      VerticalContentAlignment="Center" 
@@ -112,6 +112,7 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black"
+                                 MouseDoubleClick="passwordBox_MouseDoubleClick"
                  KeyUp="passwordBox_KeyUp">
                         <PasswordBox.Background>
                             <SolidColorBrush Color="White" 

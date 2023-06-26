@@ -6,20 +6,19 @@
       xmlns:local="clr-namespace:Journey.MVVM.Views"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1450"
+      WindowState="Maximized"
       >
-    
+
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1200"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"  >
+        <StackPanel Grid.Column="0" Margin="10,317,10,317"  >
 
 
             <DockPanel>

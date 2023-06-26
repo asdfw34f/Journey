@@ -15,6 +15,7 @@ namespace Journey.MVVM.Views
             
             context = new LogViewModel();
             DataContext = context;
+
         }
 
         private void LoginBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -45,10 +46,11 @@ namespace Journey.MVVM.Views
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((Visibility)e.NewValue != Visibility.Hidden && context.IsAuth)
-            {
-                new MainWindow().Show();
-            }
+        }
+
+        private void passwordBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            passwordBox.Clear();
         }
     }
 }
