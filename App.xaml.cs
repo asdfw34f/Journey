@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Journey.Data.MSSQL;
+using System.IO;
+using System.Windows;
 
 namespace Journey
 {
@@ -8,6 +10,32 @@ namespace Journey
     public partial class App : Application
     {
 
+        public App()
+        {
+            this.ShutdownMode = ShutdownMode.OnLastWindowClose;
+        }
 
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            try
+            {
+                using (FileStream f = new FileStream(
+                         System.Reflection.Assembly.GetExecutingAssembly().Location + "user.melog",
+                         FileMode.Open))
+                {
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+
+                    }
+                }
+
+
+            }
+            catch (FileNotFoundException)
+            {
+                
+            }
+            
+        }
     }
 }

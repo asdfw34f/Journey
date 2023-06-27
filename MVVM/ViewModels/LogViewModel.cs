@@ -1,7 +1,10 @@
 ﻿using Journey.Data.MSSQL;
+using Journey.Data.Resources.Safing;
 using Journey.Infrastructure.Commands;
 using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -25,7 +28,7 @@ namespace Journey.MVVM.ViewModels
         }
 
         private string _Login;
-        private string _Password = null;
+        private string _Password;
 
         public string Login
         {
@@ -64,10 +67,14 @@ namespace Journey.MVVM.ViewModels
 
             using (ApplicationContext db = new ApplicationContext())
             {
-                var users = db.Users.Where(p => (p.Email==Login.ToString() && p.Password==Password.ToString())) ;
+                var users = db.Users
+                    .Where(p => (p.Email == Login.ToString() && p.Password == Password.ToString()));
+
                 if (users.Count() != 0)
                 {
-                    MessageBox.Show("URA");
+                    Hashing h= new Hashing();
+                    h.WriteLog(Login, Password);
+
                     Navigate navigate = new Navigate();
                     navigate.ToMain();
                 }

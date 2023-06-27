@@ -15,5 +15,10 @@ namespace Journey.MVVM.Views
             vm = new MainViewModel();
             DataContext = vm;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

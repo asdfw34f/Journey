@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Journey"
              xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
              xmlns:v="clr-namespace:Journey.MVVM.Views"
-             StartupUri="./MVVM/Views/LogWindow.xaml">
+             StartupUri="./MVVM/Views/LogWindow.xaml"
+             Startup="Application_Startup">
     <Application.Resources>
         <DataTemplate DataType="{x:Type vm:MainViewModel}">
             <v:MainWindow/>

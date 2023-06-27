@@ -7,15 +7,24 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1450"
       WindowState="Maximized"
-      >
+      Loaded="Window_Loaded">
 
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF6671CA"/>
+                <GradientStop Color="#FF3343BF" Offset="1"/>
+                <GradientStop Color="#FF3F4CAD" Offset="0.496"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="1200"/>
+            <ColumnDefinition Width="600*"/>
+            <ColumnDefinition Width="250"/>
+
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Margin="10,317,10,317"  >
@@ -39,9 +48,6 @@
                     FontWeight="Bold" 
                     Cursor="Hand"
                     IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
                     <Button.Content>
                         <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -73,9 +79,6 @@
                     FontWeight="Bold" 
                     Cursor="Hand"
                     IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
                     <Button.Content>
                         <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -106,9 +109,6 @@
                     FontWeight="Bold" 
                     Cursor="Hand"
                     IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
                     <Button.Content>
                         <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -124,10 +124,12 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Margin="463,238,463,238">
+        <StackPanel Grid.Column="2" 
+                    VerticalAlignment="Center">
 
-            <Image Height="150"
-                   Width="150"
+            <Image x:Name="Photo"
+                Height="200"
+                   Width="200"
                    Margin="25"
                    >
             </Image>
@@ -139,8 +141,9 @@
                      Margin="15, 30, 15, 5"
                      FontSize="16"
                      BorderThickness="0" 
-                   Foreground="Black" 
-                   FontFamily="Dubai Medium"/>
+                   FontFamily="Britannic Bold" 
+                   FontWeight="Bold" 
+                   Foreground="#FFC3BFBF"/>
 
             <Label Content="Имя" 
                    Margin="15, 5, 15, 15"
@@ -148,10 +151,64 @@
                      Height="35" 
                      VerticalContentAlignment="Center" 
                      FontSize="16"
-                     BorderThickness="0"
-                   Foreground="Black" 
-                   FontFamily="Dubai Medium"/>
+                     BorderThickness="0" 
+                   FontFamily="Britannic Bold"
+                   FontWeight="Bold" 
+                   Foreground="#FFC3BFBF"/>
+
+
+            <Label Content="О себе" 
+                   Margin="15, 5, 15, 15"
+                     Width="200" 
+                     Height="35" 
+                     VerticalContentAlignment="Center" 
+                     FontSize="16"
+                     BorderThickness="0" 
+                   FontFamily="Britannic Bold" 
+                   FontWeight="Bold" 
+                   Foreground="#FFC3BFBF"/>
+
+            <Label Content="Дата рождения" 
+                   Margin="15, 5, 15, 15"
+                     Width="200" 
+                     Height="35" 
+                     VerticalContentAlignment="Center" 
+                     FontSize="16"
+                     BorderThickness="0" 
+                   FontFamily="Britannic Bold" 
+                   FontWeight="Bold"
+                   Foreground="#FFC3BFBF"/>
+
+            <Button 
+                x:Name="ExitBtn" 
+                    Height="40"
+                    Width="120"
+            Margin="5, 5, 5, 5"
+                    Template="{StaticResource ButtonTemplate}" 
+                    VerticalContentAlignment="Center" 
+                    FontStretch="UltraExpanded" 
+                    Cursor="Hand"
+                    IsEnabled="True"
+                >
+                <Button.Content>
+                    <TextBlock Text="Выход" 
+                               FontSize="16" 
+                               Foreground="#FFE2E2E2" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Button.Content>
+                </Button>
+
         </StackPanel>
+        <ScrollContentPresenter Grid.Column="1">
+            <ScrollContentPresenter.Content>
+                <StackPanel>
+                    
+                </StackPanel>
+            </ScrollContentPresenter.Content>
+        </ScrollContentPresenter>
+
+
 
     </Grid>
 </Window>

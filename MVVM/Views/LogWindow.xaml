@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Journey"
         xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
         xmlns:pages="clr-namespace:Journey.MVVM.Views.Pages"
+        xmlns:w="clr-namespace:Journey.Infrastructure.Helpers"
         mc:Ignorable="d"
         Height="650" Width="1200"
         WindowState="Maximized"
@@ -102,8 +103,10 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-                    <PasswordBox x:Name="passwordBox"
-                         PasswordChanged="passwordBox_PasswordChanged"
+                    <PasswordBox
+                        w:PasswordHelper.Attach="True"
+                        w:PasswordHelper.Password="{Binding Password, Mode=TwoWay}"
+                        x:Name="passwordBox"
                                  Width="240" 
                      Height="40" 
                      Margin="10, 0, 10, 0" 
