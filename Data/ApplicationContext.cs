@@ -10,10 +10,10 @@ namespace Journey.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Server=DESKTOP-9N46EPK\DANIIL_BANK1230;Database=Journеy;Integrated Security=true
-            
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-9N46EPK\DANIIL_BANK1230;Database=Journеy;Integrated" 
-                           + " Security=False; User Id=User;Password=User123;MultipleActiveResultSets=True;"
-                           + "TrustServerCertificate=True;", sqlServerOptionsAction: sqlOptions => 
+            // DESKTOP-U2DHO8A\MYSERVER
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-U2DHO8A\MYSERVER;Database=Journеy;Integrated"
+                           + " Security=True;TrustServerCertificate=true;",
+                           sqlServerOptionsAction: sqlOptions => 
                            { sqlOptions.EnableRetryOnFailure(); });
         }
 
