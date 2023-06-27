@@ -227,12 +227,16 @@
                                TextAlignment="Justify"
                                FontStyle="Italic">
                         Нажмите
-                        <Hyperlink TextDecorations="Underline" 
-                             FontWeight="Normal"
-                             Cursor="Hand"
-                                   NavigateUri="/MVVM/Views/Pages/AuthPage.xaml">
+                        <Label Padding="0"
+                            FontWeight="Normal"
+                             Cursor="Hand" 
+                               Background="{x:Null}" 
+                               Height="15" 
+                               Foreground="#FF003EFF" 
+                               Mouse.MouseDown="Label_MouseDown"
+                             >
                             сюда
-                        </Hyperlink>
+                        </Label>
                         для автаризации
                 </TextBlock>
             </Label.Content>
