@@ -1,10 +1,8 @@
 ﻿using Journey.Data.MSSQL;
-using Journey.Data.Resources.Safing;
 using Journey.Infrastructure.Commands;
 using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
-using System.Diagnostics;
-using System.IO;
+using Journey.Security;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;

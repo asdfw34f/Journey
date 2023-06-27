@@ -1,5 +1,7 @@
 ﻿using Journey.Data.MSSQL;
-using System.IO;
+using Journey.MVVM.Views;
+using Journey.Security;
+using System.Linq;
 using System.Windows;
 
 namespace Journey
@@ -9,7 +11,6 @@ namespace Journey
     /// </summary>
     public partial class App : Application
     {
-
         public App()
         {
             this.ShutdownMode = ShutdownMode.OnLastWindowClose;
@@ -17,25 +18,24 @@ namespace Journey
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            try
+            Hashing h = new Hashing();
+            string hash;
+            if (!string.IsNullOrEmpty(hash = h.ReadLog()))
             {
-                using (FileStream f = new FileStream(
-                         System.Reflection.Assembly.GetExecutingAssembly().Location + "user.melog",
-                         FileMode.Open))
+                hash = hash.Substring(0, h.GetHash("Login ").Length);
+                hash = hash.Replace(h.GetHash(" Password "), "");
+                
+                using (ApplicationContext db = new ApplicationContext())
                 {
-                    using (ApplicationContext db = new ApplicationContext())
+                   var users = db.Users.Where(u => h.GetHash(u.Email + u.Password) == hash);
+                    if (users.Count() != 0)
                     {
-
+                        MainWindow = new MainWindow();
+                        Windows[0].Close();
+                        MainWindow.Show();
                     }
                 }
-
-
             }
-            catch (FileNotFoundException)
-            {
-                
-            }
-            
         }
     }
 }

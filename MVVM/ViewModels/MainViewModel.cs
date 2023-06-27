@@ -1,9 +1,7 @@
 ﻿using Journey.Data.MSSQL;
-using Journey.Infrastructure.Commands.Base;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models;
 using System;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Journey.MVVM.ViewModels

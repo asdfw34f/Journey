@@ -4,12 +4,15 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 
-namespace Journey.Data.Resources.Safing
+namespace Journey.Security
 {
     public class Hashing
     {
-        private string GetHash(string log) => Convert.ToHexString(MD5
+        LogPath logPath = new LogPath();
+        public string GetHash(string log) => Convert.ToHexString(MD5
             .Create().ComputeHash(Encoding.UTF8.GetBytes(log)));
+
+        private bool CheckLogFile() => File.Exists(logPath.FileLogPath);
 
         public bool WriteLog(string login, string password)
         {
@@ -17,8 +20,7 @@ namespace Journey.Data.Resources.Safing
 
             try
             {
-                using FileStream f = new FileStream(
-                        System.Reflection.Assembly.GetExecutingAssembly().Location + "user.melog",
+                using FileStream f = new FileStream(logPath.FileLogPath,
                         FileMode.OpenOrCreate);
                 {
                     f.Write(Encoding.UTF8.GetBytes(hash));
@@ -36,31 +38,40 @@ namespace Journey.Data.Resources.Safing
             }
         }
 
-        private string ReadLog()
+        public string ReadLog()
         {
+            if (!CheckLogFile())
+                return null;
             try
             {
                 byte[] hash = null;
 
-                using (FileStream f = new FileStream(
-                            System.Reflection.Assembly
-                            .GetExecutingAssembly().Location + "user.melog",
+                using (FileStream f = new FileStream(logPath.FileLogPath,
                             FileMode.Open))
                 {
                     f.Read(hash);
                 }
                 return Convert.ToHexString(hash);
             }
-            catch (FileNotFoundException ex)
+            catch (IOException ex)
             {
+                MessageBox.Show(
+                    ex.Source,
+                    ex.Message,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return null;
             }
         }
 
         public bool EqualsLog(string login, string password)
         {
-            string log = "Login " + login + " Password " + password;
+            
             string hash = ReadLog();
+            if (string.IsNullOrEmpty(hash))
+                return false;
+
+            string log = "Login " + login + " Password " + password;
             string oldHash = GetHash(log);
 
             bool bEqual = false;
@@ -68,7 +79,7 @@ namespace Journey.Data.Resources.Safing
             if (oldHash.Length == hash.Length)
             {
                 int i = 0;
-                while ((i < oldHash.Length) && (oldHash[i] == hash[i]))
+                while (i < oldHash.Length && oldHash[i] == hash[i])
                 {
                     i += 1;
                 }
@@ -79,5 +90,6 @@ namespace Journey.Data.Resources.Safing
             }
             return bEqual;
         }
+
     }
 }
