@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 
 namespace Journey.MVVM.Models
 {
-    public class User
+    public class Users
     {
         [Key]
         public string? Email { get; set; }
@@ -11,5 +12,6 @@ namespace Journey.MVVM.Models
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public DateTime? Date { get; set; }
+        public byte[]? Image { get; set; }
     }
 }

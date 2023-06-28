@@ -2,8 +2,11 @@
 using Journey.Infrastructure.Commands;
 using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
+using Journey.MVVM.Models;
 using Journey.Security;
+using System;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 
@@ -49,15 +52,19 @@ namespace Journey.MVVM.ViewModels
                 if (string.IsNullOrEmpty(Login))
                 {
                     MessageBox.Show(
-                        "Заполните поле логина", "Ошибка авторизации",
-                        MessageBoxButton.OK, MessageBoxImage.Stop
+                        "Заполните поле логина",
+                        "Ошибка авторизации",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Stop
                         );
                 }
                 else
                 {
                     MessageBox.Show(
-                        "Заполните поле пароля", "Ошибка авторизации",
-                        MessageBoxButton.OK, MessageBoxImage.Stop
+                        "Заполните поле пароля", 
+                        "Ошибка авторизации",
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Stop
                         );
                 }
                 return;
@@ -65,16 +72,16 @@ namespace Journey.MVVM.ViewModels
 
             using (ApplicationContext db = new ApplicationContext())
             {
-                var users = db.Users
-                    .Where(p => (p.Email == Login.ToString() && p.Password == Password.ToString()));
+                Users? user = db.Users
+                    .Where(p => (p.Email == Login.ToString() &&
+                    p.Password == Password.ToString())).FirstOrDefault();
 
-                if (users.Count() != 0)
+                if (user != null)
                 {
-                    Hashing h= new Hashing();
-                    h.WriteLog(Login, Password);
-
-                    Navigate navigate = new Navigate();
-                    navigate.ToMain();
+                    new FileLog()
+                        .WriteLogAsync(user);
+                    new Navigate()
+                        .ToMain();
                 }
             }
         }

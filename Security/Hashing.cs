@@ -1,95 +1,34 @@
-﻿using System;
-using System.IO;
+﻿using Journey.Data.MSSQL;
+using Journey.MVVM.Models;
+using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows;
 
 namespace Journey.Security
 {
-    public class Hashing
+    internal class Hashing
     {
-        LogPath logPath = new LogPath();
-        public string GetHash(string log) => Convert.ToHexString(MD5
-            .Create().ComputeHash(Encoding.UTF8.GetBytes(log)));
+        internal string GetHash(string password) => Convert.ToHexString(MD5
+            .Create().ComputeHash(Encoding.UTF8.GetBytes(password)));
 
-        private bool CheckLogFile() => File.Exists(logPath.FileLogPath);
-
-        public bool WriteLog(string login, string password)
+        internal bool EqualsLog(string password)
         {
-            var hash = GetHash("Login " + login + " Password " + password);
-
-            try
-            {
-                using FileStream f = new FileStream(logPath.FileLogPath,
-                        FileMode.OpenOrCreate);
-                {
-                    f.Write(Encoding.UTF8.GetBytes(hash));
-                }
-                return true;
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show(
-                    ex.Source,
-                    ex.Message,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-                return false;
-            }
-        }
-
-        public string ReadLog()
-        {
-            if (!CheckLogFile())
-                return null;
-            try
-            {
-                byte[] hash = null;
-
-                using (FileStream f = new FileStream(logPath.FileLogPath,
-                            FileMode.Open))
-                {
-                    f.Read(hash);
-                }
-                return Convert.ToHexString(hash);
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show(
-                    ex.Source,
-                    ex.Message,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-                return null;
-            }
-        }
-
-        public bool EqualsLog(string login, string password)
-        {
-            
-            string hash = ReadLog();
-            if (string.IsNullOrEmpty(hash))
+            if (password == null)
                 return false;
 
-            string log = "Login " + login + " Password " + password;
-            string oldHash = GetHash(log);
+            password = GetHash(password);
 
-            bool bEqual = false;
-
-            if (oldHash.Length == hash.Length)
+            using (ApplicationContext db = new ApplicationContext())
             {
-                int i = 0;
-                while (i < oldHash.Length && oldHash[i] == hash[i])
+                Users? user = db.Users
+                    .Where(u=>u.Password == password).FirstOrDefault();
+                if (user != null)
                 {
-                    i += 1;
-                }
-                if (i == oldHash.Length)
-                {
-                    bEqual = true;
+                    return true;
                 }
             }
-            return bEqual;
+            return false;
         }
-
     }
 }

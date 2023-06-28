@@ -1,7 +1,10 @@
 ﻿using Journey.Data.MSSQL;
+using Journey.Infrastructure.Commands;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models;
+using Journey.Security;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Journey.MVVM.ViewModels
@@ -13,7 +16,7 @@ namespace Journey.MVVM.ViewModels
         private string _Description;
         private DateTime _Date;
 
-        private User _User;
+        private Users _User;
 
         public string Name
         {
@@ -48,9 +51,18 @@ namespace Journey.MVVM.ViewModels
             }
         }
 
+        public ICommand ExitCommand { get; }
+        private bool CanExit(object p) => true;
+        private void OnExit(object p)
+        {
+            FileLog log = new FileLog();
+            log.FileDelete();
+            Application.Current.Shutdown();
+        }
 
         public MainViewModel()
         {
+            ExitCommand = new LambdaCommand(OnExit, CanExit);
 
         }
     }

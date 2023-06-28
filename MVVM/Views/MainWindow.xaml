@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Journey.MVVM.Views"
+        xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1450"
       WindowState="Maximized"
       Loaded="Window_Loaded">
 
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
@@ -180,6 +185,7 @@
                    Foreground="#FFC3BFBF"/>
 
             <Button 
+                Command="{Binding ExitCommand}"
                 x:Name="ExitBtn" 
                     Height="40"
                     Width="120"
