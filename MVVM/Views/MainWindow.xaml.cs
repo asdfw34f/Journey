@@ -1,4 +1,7 @@
-﻿using Journey.MVVM.ViewModels;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+using Journey.MVVM.ViewModels;
 using System.Windows;
 
 namespace Journey.MVVM.Views
@@ -8,9 +11,10 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainViewModel vm;
+        
         public MainWindow()
         {
+            MainViewModel vm;
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;

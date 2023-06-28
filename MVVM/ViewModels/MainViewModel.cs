@@ -1,4 +1,7 @@
-﻿using Journey.Data.MSSQL;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+using Journey.Data.MSSQL;
 using Journey.Infrastructure.Commands;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models;
