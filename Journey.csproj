@@ -25,7 +25,11 @@
 
   <ItemGroup>
     <Resource Include="Assets\News.png" />
-    <Resource Include="Assets\Profile.png" />
+    <Resource Include="Assets\Profile.png">
+      <Generator>imgUser</Generator>
+      <CustomToolNamespace>Journey.Assets</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Ticket.png" />
     <Resource Include="Assets\User.png" />
     <Resource Include="Res\NewButton.xaml">

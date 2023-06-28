@@ -8,19 +8,19 @@ using System.Windows.Controls;
 
 namespace Journey.MVVM.ViewModels.Controls
 {
-    class PostViewModel: NotifyPropertyChanged
+    internal class PostViewModel : NotifyPropertyChanged
     {
-        private string _Name = "Иван Иванов";
+        private readonly string _Name = "Иван Иванов";
         private string _Description = "Описание поста";
         private string _Title = "Заголовок";
         private DateTime _Date = DateTime.Now.Date;
-        private Image _Image;
+        private Image? _Image;
         private Visibility _VisImage = Visibility.Collapsed;
- 
+
         public string Name
         {
             get => _Description;
-            set=>Set(ref _Description, value);
+            set => Set(ref _Description, value);
         }
 
         public string Title

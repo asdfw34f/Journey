@@ -38,7 +38,11 @@
             <DockPanel>
                 <Image Height="40"
                    Width="40"
-                   Source="/Assets/Profile.png"/>
+                   Source="/Assets/Profile.png">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="/Assets/Profile.png"/>
+                    </Image.OpacityMask>
+                </Image>
 
                 <Button 
                 x:Name="ProfileBtn" 
@@ -136,10 +140,15 @@
                 Height="200"
                    Width="200"
                    Margin="25"
-                   >
+                   Source="{Binding Image}"
+                   Visibility="Visible">
+                <Image.OpacityMask>
+                    <ImageBrush TileMode="FlipXY" ImageSource="{Binding Image}">
+                    </ImageBrush>
+                </Image.OpacityMask>
             </Image>
 
-            <Label Content="Фамилия" 
+            <Label Content="{Binding User.Surname}" 
                      Width="200" 
                      Height="35" 
                      VerticalContentAlignment="Center" 
@@ -150,7 +159,7 @@
                    FontWeight="Bold" 
                    Foreground="#FFC3BFBF"/>
 
-            <Label Content="Имя" 
+            <Label Content="{Binding User.Name}" 
                    Margin="15, 5, 15, 15"
                      Width="200" 
                      Height="35" 
@@ -173,7 +182,7 @@
                    FontWeight="Bold" 
                    Foreground="#FFC3BFBF"/>
 
-            <Label Content="Дата рождения" 
+            <Label Content="{Binding User.Date}" 
                    Margin="15, 5, 15, 15"
                      Width="200" 
                      Height="35" 

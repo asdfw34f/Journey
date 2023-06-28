@@ -30,9 +30,9 @@ namespace Journey.MVVM.Views.Pages
         {
             // Navigate back one page from this page, if there is an entry
             // in back navigation history
-            if (this.NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
             }
         }
     }

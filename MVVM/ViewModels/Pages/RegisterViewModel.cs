@@ -6,14 +6,14 @@ using System;
 
 namespace Journey.MVVM.ViewModels.Pages
 {
-    internal class RegisterViewModel: NotifyPropertyChanged
+    internal class RegisterViewModel : NotifyPropertyChanged
     {
-        private string _Name;
-        private string _Surename;
+        private string? _Name;
+        private string? _Surename;
         private DateTime _Date;
-        private string _Email;
-        private string _Login;
-        private string _Password;
+        private string? _Email;
+        private string? _Login;
+        private string? _Password;
 
         public string Name
         {

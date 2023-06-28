@@ -14,14 +14,14 @@ namespace Journey.Infrastructure.Navigate
             App.Current.MainWindow.Show();
         }
 
-        public void ToLog() 
+        public void ToLog()
         {
             App.Current.MainWindow = new LogWindow();
             App.Current.Windows[1].Close();
             App.Current.MainWindow.Show();
         }
 
-        public Navigate() 
+        public Navigate()
         {
         }
     }

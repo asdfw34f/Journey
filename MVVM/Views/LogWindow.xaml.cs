@@ -11,11 +11,11 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class LogWindow : Window
     {
-        LogViewModel context;
+        private readonly LogViewModel context;
         public LogWindow()
         {
             InitializeComponent();
-            
+
             context = new LogViewModel();
             DataContext = context;
 
@@ -25,7 +25,7 @@ namespace Journey.MVVM.Views
         {
             if (e.Key == System.Windows.Input.Key.Down)
             {
-                passwordBox.Focus();
+                _ = passwordBox.Focus();
             }
         }
 
@@ -33,7 +33,7 @@ namespace Journey.MVVM.Views
         {
             if (e.Key == System.Windows.Input.Key.Up)
             {
-                LoginBox.Focus();
+                _ = LoginBox.Focus();
             }
             else if (e.Key == System.Windows.Input.Key.Enter)
             {

@@ -13,39 +13,37 @@ namespace Journey.Security
     {
         private protected class Path
         {
-            private string _FullName = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
-            private string _Directory = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
-
-            internal string FullName
-            {
-                get => _FullName;
-            }
-            internal string Directory
-            {
-                get => _Directory;
-            }
+            internal string FullName { get; } = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
+            internal string Directory { get; } = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
 
         }
-        Path path = new Path();
 
-        internal bool CheckLogFile() => File.Exists(path.FullName);
+        private readonly Path path = new();
 
-        internal void FileDelete() => File.Delete(path.FullName);
+        internal bool CheckLogFile()
+        {
+            return File.Exists(path.FullName);
+        }
+
+        internal void FileDelete()
+        {
+            File.Delete(path.FullName);
+        }
 
         internal async Task<bool> WriteLogAsync(Users Login)
         {
             try
             {
-                using FileStream f = new FileStream(
+                using FileStream f = new(
                     path.FullName, FileMode.OpenOrCreate);
             }
             catch (DirectoryNotFoundException)
             {
-                Directory.CreateDirectory(path.Directory);
+                _ = Directory.CreateDirectory(path.Directory);
             }
             catch (IOException ex)
             {
-                MessageBox.Show(
+                _ = MessageBox.Show(
                     ex.Source,
                     ex.Message,
                     MessageBoxButton.OK,
@@ -54,7 +52,7 @@ namespace Journey.Security
             }
             finally
             {
-                using FileStream f = new FileStream(
+                using FileStream f = new(
                     path.FullName, FileMode.OpenOrCreate);
 
                 await JsonSerializer.SerializeAsync<Users>(f, Login);
@@ -67,10 +65,13 @@ namespace Journey.Security
         internal Users? ReadLogAsync()
         {
             if (!CheckLogFile())
+            {
                 return null;
+            }
+
             try
             {
-                using FileStream f = new FileStream(
+                using FileStream f = new(
                 path.FullName, FileMode.Open);
 
                 Users? user = JsonSerializer.Deserialize<Users>(f);
@@ -79,7 +80,7 @@ namespace Journey.Security
             }
             catch (IOException ex)
             {
-                MessageBox.Show(
+                _ = MessageBox.Show(
                     ex.Source,
                     ex.Message,
                     MessageBoxButton.OK,

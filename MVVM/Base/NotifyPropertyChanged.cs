@@ -8,14 +8,18 @@ namespace Journey.MVVM.Base
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
-            if (Equals(field, value)) return false;
+            if (Equals(field, value))
+            {
+                return false;
+            }
+
             field = value;
             OnPropertyChanged(propertyName);
             return true;
@@ -28,10 +32,13 @@ namespace Journey.MVVM.Base
 
         private bool _Disposed;
 
-        protected virtual void Dispose(bool Disposing) 
+        protected virtual void Dispose(bool Disposing)
         {
             if (_Disposed || !Disposing)
+            {
                 return;
+            }
+
             _Disposed = true;
         }
     }

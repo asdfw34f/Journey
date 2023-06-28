@@ -11,10 +11,10 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        private readonly MainViewModel vm;
+
         public MainWindow()
         {
-            MainViewModel vm;
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
@@ -22,7 +22,7 @@ namespace Journey.MVVM.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            vm.LoadedMyselfCommand.Execute(null);
         }
     }
 }

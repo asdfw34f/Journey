@@ -5,7 +5,7 @@ namespace Journey.Data.MSSQL
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Users> Users { get; set; } = null;
+        public DbSet<Users>? Users { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,12 +14,12 @@ namespace Journey.Data.MSSQL
             // Integrated Security=true
 
             // DESKTOP-U2DHO8A\MYSERVER
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-9N46EPK\DANIIL_BANK1230;"
+            _ = optionsBuilder.UseSqlServer(@"Server=DESKTOP-9N46EPK\DANIIL_BANK1230;"
                            + "Database=Journеy;"
                            + "Integrated Security=True;"
                            + "TrustServerCertificate=true;",
-                           sqlServerOptionsAction: sqlOptions => 
-                           { sqlOptions.EnableRetryOnFailure(); });
+                           sqlServerOptionsAction: sqlOptions =>
+                           { _ = sqlOptions.EnableRetryOnFailure(); });
         }
 
     }

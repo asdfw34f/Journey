@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Journey.Infrastructure.Helpers
 {
@@ -52,10 +52,10 @@ namespace Journey.Infrastructure.Helpers
         private static void OnPasswordPropertyChanged(DependencyObject sender,
             DependencyPropertyChangedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
+            PasswordBox? passwordBox = sender as PasswordBox;
             passwordBox.PasswordChanged -= PasswordChanged;
 
-            if (!(bool)GetIsUpdating(passwordBox))
+            if (!GetIsUpdating(passwordBox))
             {
                 passwordBox.Password = (string)e.NewValue;
             }
@@ -65,10 +65,10 @@ namespace Journey.Infrastructure.Helpers
         private static void Attach(DependencyObject sender,
             DependencyPropertyChangedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
-
-            if (passwordBox == null)
+            if (sender is not PasswordBox passwordBox)
+            {
                 return;
+            }
 
             if ((bool)e.OldValue)
             {
@@ -83,7 +83,7 @@ namespace Journey.Infrastructure.Helpers
 
         private static void PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
+            PasswordBox? passwordBox = sender as PasswordBox;
             SetIsUpdating(passwordBox, true);
             SetPassword(passwordBox, passwordBox.Password);
             SetIsUpdating(passwordBox, false);

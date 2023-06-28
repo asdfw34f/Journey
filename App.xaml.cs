@@ -13,7 +13,8 @@ namespace Journey
     /// </summary>
     public partial class App : Application
     {
-        public Users User;
+
+        public static Users? User { get; set; }
 
         public App()
         {
@@ -22,7 +23,7 @@ namespace Journey
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            FileLog log = new FileLog();
+            FileLog log = new();
             bool isLog = log.CheckLogFile();
             if (isLog)
             {
