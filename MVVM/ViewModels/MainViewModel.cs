@@ -82,9 +82,8 @@ namespace Journey.MVVM.ViewModels
 
         private void OnLoadedMyself(object p)
         {
+            User = new Users();
             User = App.User;
-            _Image = (BitmapImage)new System.Drawing.ImageConverter().ConvertFrom(User.Image);
-            FinalImage.Source = _Image;
         }
 
         public ICommand ExitCommand { get; }

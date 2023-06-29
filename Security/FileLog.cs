@@ -13,9 +13,15 @@ namespace Journey.Security
     {
         private protected class Path
         {
-            internal string FullName { get; } = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
-            internal string Directory { get; } = System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
+            internal string FullName
+            {
+                get => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
+            }
 
+            internal string Directory
+            {
+                get => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
+            }
         }
 
         private readonly Path path = new();
