@@ -13,31 +13,27 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/MainView.png" TileMode="FlipXY"/>
+    </Window.Background>
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF6671CA"/>
-                <GradientStop Color="#FF3343BF" Offset="1"/>
-                <GradientStop Color="#FF3F4CAD" Offset="0.496"/>
-            </LinearGradientBrush>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="600*"/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="228"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="238"/>
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="10,317,10,317"  >
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"   >
 
 
             <DockPanel>
-                <Image Height="40"
-                   Width="40"
+                <Image Height="30"
+                   Width="30"
                    Source="/Assets/Profile.png">
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="/Assets/Profile.png"/>
@@ -72,9 +68,10 @@
             </DockPanel>
 
             <DockPanel>
-                <Image Height="40"
-                   Width="40"
-                   Source="/Assets/News.png"/>
+                <Image Height="30"
+                   Width="30" Source="/Assets/News.png" />
+
+                       
                 <Button 
                 x:Name="NewsBtn" 
                     Height="40"
@@ -102,9 +99,10 @@
             </DockPanel>
 
             <DockPanel>
-                <Image Height="40"
-                   Width="40"
-                   Source="/Assets/Ticket.png"/>
+                <Image Height="30"
+                   Width="30"
+                       Source="/Assets/Tickets.png">
+                </Image>
                 <Button 
                 x:Name="BuyBtn" 
                     Margin="5, 5, 5, 5"
@@ -133,8 +131,7 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="2" 
-                    VerticalAlignment="Center">
+        <StackPanel Grid.Column="2" Margin="0,125,0,124">
 
             <Image x:Name="Photo"
                 Height="200"
@@ -212,13 +209,13 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
                 </Button.Content>
-                </Button>
+            </Button>
 
         </StackPanel>
         <ScrollContentPresenter Grid.Column="1">
             <ScrollContentPresenter.Content>
                 <StackPanel>
-                    
+
                 </StackPanel>
             </ScrollContentPresenter.Content>
         </ScrollContentPresenter>

@@ -8,11 +8,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="1200" d:DesignWidth="800"
       Title="RegisterPage">
-    
+
     <Page.DataContext>
         <vm:RegisterViewModel/>
     </Page.DataContext>
-    
+
     <Page.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Page.Resources>
@@ -24,15 +24,16 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
-        <Image Height="150" 
-                   Width="150"
+        <Image Height="125" 
+                   Width="125"
                    Source="/Assets/User.png"
-                   Margin="0, 0, 0, 20"
+                   Margin="0, 10, 0, 20"
                    StretchDirection="DownOnly"
                    Opacity="0.9" 
                    SnapsToDevicePixels="True"/>
-        
-        <Label Content="Имя" 
+        <DockPanel>
+            <StackPanel>
+                <Label Content="Имя" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -40,8 +41,8 @@
                      BorderThickness="0"
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
-        
-        <TextBox x:Name="NameBox" 
+
+                <TextBox x:Name="NameBox" 
                      Width="240" 
                      Height="40" 
                      Margin="10, 0, 10, 10" 
@@ -51,13 +52,14 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-            <TextBox.Background>
-                <SolidColorBrush Color="White"
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White"
                                      Opacity="0.6"/>
-            </TextBox.Background>
-            </TextBox>
-
-        <Label Content="Фамилия" 
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Фамилия" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -65,8 +67,8 @@
                      BorderThickness="0"
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
-        
-        <TextBox x:Name="SurenameBox" 
+
+                <TextBox x:Name="SurenameBox" 
                      Width="240" 
                      Height="40" 
                      Margin="10, 0, 10, 10" 
@@ -76,13 +78,19 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-            <TextBox.Background>
-                <SolidColorBrush Color="White"
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White"
                                      Opacity="0.6"/>
-            </TextBox.Background>
-        </TextBox>
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
 
-        <Label Content="Дата рождения" 
+
+        </DockPanel>
+
+        <DockPanel>
+            <StackPanel>
+                <Label Content="Электронная почта" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -90,22 +98,48 @@
                      BorderThickness="0"
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
-        
-        <DatePicker Name="BirthdayPicker"
+
+                <TextBox x:Name="EmailmeBox" 
+                     Text="{Binding Login}"
+                         Width="240" 
+                     Height="40" 
+                     Margin="10, 0, 10, 10" 
+                     VerticalContentAlignment="Center" 
+                     FontSize="16"
+                     MaxLines="1" 
+                     MaxLength="45"
+                     BorderThickness="0"
+                     BorderBrush="Black">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White"
+                                     Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Дата рождения" 
+                     Width="240" 
+                     Height="25" 
+                     VerticalContentAlignment="Center" 
+                     FontSize="12"
+                     BorderThickness="0"
+                   FontWeight="Bold" 
+                   Foreground="#FF0F2B50"/>
+
+                <DatePicker x:Name="BirthdayPicker"
                     Width="240" 
                      Height="40" 
                      Margin="10, 0, 10, 10" 
                      VerticalContentAlignment="Center" 
                      FontSize="16"
-                     BorderThickness="0"
-                     BorderBrush="Black" 
+                     BorderThickness="0" 
                     SelectedDateFormat="Short" 
-                    IsTodayHighlighted="False" 
-                    Opacity="0.6">
-            
-        </DatePicker>
-
-        <Label Content="Электронная почта" 
+                    IsTodayHighlighted="False" Opacity="0.75" BorderBrush="{x:Null}"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel>
+            <StackPanel>
+                <Label Content="Пароль" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -114,58 +148,7 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-        <TextBox x:Name="EmailmeBox" 
-                     Width="240" 
-                     Height="40" 
-                     Margin="10, 0, 10, 10" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     MaxLines="1" 
-                     MaxLength="45"
-                     BorderThickness="0"
-                     BorderBrush="Black">
-            <TextBox.Background>
-                <SolidColorBrush Color="White"
-                                     Opacity="0.6"/>
-            </TextBox.Background>
-        </TextBox>
-
-        <Label Content="Логин" 
-                     Width="240" 
-                     Height="25" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="12"
-                     BorderThickness="0"
-                   FontWeight="Bold" 
-                   Foreground="#FF0F2B50"/>
-
-        <TextBox x:Name="LoginBox" 
-                     Text="{Binding Login}"
-                     Width="240" 
-                     Height="40" 
-                     Margin="10, 0, 10, 10" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     MaxLines="1" 
-                     MaxLength="45"
-                     BorderThickness="0"
-                     BorderBrush="Black">
-            <TextBox.Background>
-                <SolidColorBrush Color="White"
-                                     Opacity="0.6"/>
-            </TextBox.Background>
-        </TextBox>
-
-        <Label Content="Пароль" 
-                     Width="240" 
-                     Height="25" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="12"
-                     BorderThickness="0"
-                   FontWeight="Bold" 
-                   Foreground="#FF0F2B50"/>
-
-        <PasswordBox x:Name="passwordBox"
+                <PasswordBox x:Name="passwordBox"
                          PasswordChanged="passwordBox_PasswordChanged"
                      Width="240" 
                      Height="40" 
@@ -175,13 +158,14 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-            <PasswordBox.Background>
-                <SolidColorBrush Color="White" 
+                    <PasswordBox.Background>
+                        <SolidColorBrush Color="White" 
                                      Opacity="0.6"/>
-            </PasswordBox.Background>
-        </PasswordBox>
-
-        <Label Content="Повторите пароль" 
+                    </PasswordBox.Background>
+                </PasswordBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Повторите пароль" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -189,8 +173,8 @@
                      BorderThickness="0"
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
-        
-        <PasswordBox x:Name="passwordBox_Copy"
+
+                <PasswordBox x:Name="passwordBox_Copy"
                          PasswordChanged="passwordBox_Copy_PasswordChanged"
                      Width="240" 
                      Height="40" 
@@ -200,12 +184,20 @@
                      MaxLength="45"
                      BorderThickness="0"
                      BorderBrush="Black">
-            <PasswordBox.Background>
-                <SolidColorBrush Color="White" 
+                    <PasswordBox.Background>
+                        <SolidColorBrush Color="White" 
                                      Opacity="0.6"/>
-            </PasswordBox.Background>
-        </PasswordBox>
-        
+                    </PasswordBox.Background>
+                </PasswordBox>
+            </StackPanel>
+        </DockPanel>
+
+
+
+
+
+
+
         <Label 
                 Margin="0"
                 Padding="0"
@@ -219,7 +211,7 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     HorizontalContentAlignment="Center">
-            
+
             <Label.Content>
                 <TextBlock FontSize="14"
                                FontWeight="Normal" 
@@ -241,7 +233,7 @@
                 </TextBlock>
             </Label.Content>
         </Label>
-        
+
         <Button x:Name="EnterBTN" 
                     Margin="5, 35, 5, 20"
                     Height="30"
@@ -257,7 +249,7 @@
                 <SolidColorBrush Color="#FFDDDDDD" 
                                  Opacity="0.6"/>
             </Button.Background>
-            
+
             <Button.Content>
                 <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"

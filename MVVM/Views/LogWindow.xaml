@@ -20,54 +20,53 @@
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush TileMode="Tile" ImageSource="/Assets/Auth.png" Stretch="Fill"/>
+    </Window.Background>
 
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" 
-                                 StartPoint="0.5,0" 
-                                 SpreadMethod="Pad"
-                                 Opacity="0.7">
-                <GradientStop Color="#FF74EFFF"/>
-                <GradientStop Color="#FF001BFF" Offset="1"/>
-                <GradientStop Color="#FF00D6FF" Offset="0.709"/>
-                <GradientStop Color="#FF004AFF" Offset="0.931"/>
-            </LinearGradientBrush>
-        </Grid.Background>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="424*"/>
-            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition />
 
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="155"/>
+            <RowDefinition Height="437*"/>
+            <RowDefinition Height="42"/>
 
+        </Grid.RowDefinitions>
 
 
         <Frame x:Name="FrameMain" 
-               Grid.Column="1" 
+               Grid.Column="0" 
                NavigationUIVisibility="Hidden"
+               Grid.Row="1"
                >
 
             <Frame.Content>
                 <Page x:Name="Auth">
+                    <Page.Background>
+                        <ImageBrush/>
+                    </Page.Background>
 
                     <Page.DataContext>
                         <vm:LogViewModel/>
                     </Page.DataContext>
-                        
-                        <StackPanel 
+
+                    <StackPanel 
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
-                    <Image Height="150" 
-                   Width="150"
+                        <Image Height="125" 
+                   Width="125"
                    Source="/Assets/User.png"
-                   Margin="0, 0, 0, 20"
+                   Margin="0, 10, 0, 20"
                    StretchDirection="DownOnly"
                    Opacity="0.9" 
                    SnapsToDevicePixels="True"/>
 
-                    <Label Content="Логин" 
+                        <Label Content="Логин" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -76,7 +75,7 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-                    <TextBox x:Name="LoginBox" 
+                        <TextBox x:Name="LoginBox" 
                      Text="{Binding Login}"
                      Width="240" 
                      Height="40" 
@@ -88,13 +87,13 @@
                      BorderThickness="0"
                      BorderBrush="Black"
                  KeyUp="LoginBox_KeyUp">
-                        <TextBox.Background>
-                            <SolidColorBrush Color="White"
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White"
                                      Opacity="0.6"/>
-                        </TextBox.Background>
-                    </TextBox>
+                            </TextBox.Background>
+                        </TextBox>
 
-                    <Label Content="Пароль" 
+                        <Label Content="Пароль" 
                      Width="240" 
                      Height="25" 
                      VerticalContentAlignment="Center" 
@@ -103,7 +102,7 @@
                    FontWeight="Bold" 
                    Foreground="#FF0F2B50"/>
 
-                    <PasswordBox
+                        <PasswordBox
                         w:PasswordHelper.Attach="True"
                         w:PasswordHelper.Password="{Binding Password, Mode=TwoWay}"
                         x:Name="passwordBox"
@@ -117,13 +116,13 @@
                      BorderBrush="Black"
                                  MouseDoubleClick="passwordBox_MouseDoubleClick"
                  KeyUp="passwordBox_KeyUp">
-                        <PasswordBox.Background>
-                            <SolidColorBrush Color="White" 
+                            <PasswordBox.Background>
+                                <SolidColorBrush Color="White" 
                                      Opacity="0.6"/>
-                        </PasswordBox.Background>
-                    </PasswordBox>
+                            </PasswordBox.Background>
+                        </PasswordBox>
 
-                    <Label 
+                        <Label 
                 Margin="0"
                 Padding="0"
                      Width="300" 
@@ -136,8 +135,8 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     HorizontalContentAlignment="Center">
-                        <Label.Content>
-                            <TextBlock FontSize="14"
+                            <Label.Content>
+                                <TextBlock FontSize="14"
                                FontWeight="Normal" 
                                TextWrapping="WrapWithOverflow" 
                                TextAlignment="Justify"
@@ -150,11 +149,11 @@
                             сюда
                         </Hyperlink>
                         для регистрации
-                            </TextBlock>
-                        </Label.Content>
-                    </Label>
+                                </TextBlock>
+                            </Label.Content>
+                        </Label>
 
-                    <Button   Command="{Binding EnterCommand}"
+                        <Button   Command="{Binding EnterCommand}"
                 x:Name="EnterBTN" 
                     Margin="5, 35, 5, 0"
                     Height="30"
@@ -166,11 +165,11 @@
                     FontWeight="Bold" 
                     Cursor="Hand">
 
-                        <Button.Background>
-                            <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                        </Button.Background>
-                        <Button.Content>
-                            <TextBlock HorizontalAlignment="Center"
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
+                            </Button.Background>
+                            <Button.Content>
+                                <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontWeight="SemiBold"
                                FontSize="16" 
@@ -179,116 +178,11 @@
                                TextWrapping="WrapWithOverflow"
                                Cursor="Hand"
                                >Войти</TextBlock>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </Page>
             </Frame.Content>
         </Frame>
-
-        <StackPanel Grid.Column="0" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center" >
-            <DockPanel>
-                <Image Height="35"
-                   Width="35"
-                   Source="/Assets/Profile.png"/>
-
-                <Button 
-                x:Name="ProfileBtn" 
-                    Margin="5, 10, 1, 10"
-                    Height="30"
-                    Width="100"        
-                    Template="{StaticResource ButtonTemplate}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
-                    <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="Normal"
-                               FontSize="16" 
-                               FontFamily="Bell MT" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Профиль</TextBlock>
-                    </Button.Content>
-                </Button>
-
-            </DockPanel>
-
-            <DockPanel>
-                <Image Height="35"
-                   Width="35"
-                   Source="/Assets/News.png"/>
-                <Button 
-                x:Name="NewsBtn" 
-                    Height="30"
-                    Width="100"              
-                    Margin="5, 10, 1, 10"
-                    Template="{StaticResource ButtonTemplate}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
-                    <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="Normal"
-                               FontSize="16" 
-                               FontFamily="Bell MT" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Новости</TextBlock>
-                    </Button.Content>
-                </Button>
-            </DockPanel>
-
-            <DockPanel>
-                <Image Height="35"
-                   Width="35"
-                   Source="/Assets/Ticket.png"/>
-                <Button 
-                x:Name="BuyBtn" 
-                    Margin="5, 10, 1, 10"
-                    Height="30"
-                    Width="100"
-                    Template="{StaticResource ButtonTemplate}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0.6"/>
-                    </Button.Background>
-                    <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="Normal"
-                               FontSize="16" 
-                               FontFamily="Bell MT" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Билеты</TextBlock>
-                    </Button.Content>
-                </Button>
-            </DockPanel>
-        </StackPanel>
     </Grid>
 </Window>
