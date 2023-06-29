@@ -2,6 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using Journey.MVVM.ViewModels;
+using Journey.MVVM.Views.Controls;
 using System.Windows;
 
 namespace Journey.MVVM.Views
@@ -18,6 +19,8 @@ namespace Journey.MVVM.Views
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
+            PostControl pc = new PostControl();
+            Posts.Content = pc;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

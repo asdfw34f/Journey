@@ -22,13 +22,13 @@
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="228"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="238"/>
+            <ColumnDefinition Width="239"/>
+            <ColumnDefinition Width="964"/>
+            <ColumnDefinition Width="247*"/>
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"   >
+        <StackPanel Grid.Column="0" Margin="6,317,7,317"   >
 
 
             <DockPanel>
@@ -71,7 +71,7 @@
                 <Image Height="30"
                    Width="30" Source="/Assets/News.png" />
 
-                       
+
                 <Button 
                 x:Name="NewsBtn" 
                     Height="40"
@@ -131,93 +131,9 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Margin="0,125,0,124">
-
-            <Image x:Name="Photo"
-                Height="200"
-                   Width="200"
-                   Margin="25"
-                   Source="{Binding Image}"
-                   Visibility="Visible">
-                <Image.OpacityMask>
-                    <ImageBrush TileMode="FlipXY" ImageSource="{Binding Image}">
-                    </ImageBrush>
-                </Image.OpacityMask>
-            </Image>
-
-            <Label Content="{Binding User.Surname}" 
-                     Width="200" 
-                     Height="35" 
-                     VerticalContentAlignment="Center" 
-                     Margin="15, 30, 15, 5"
-                     FontSize="16"
-                     BorderThickness="0" 
-                   FontFamily="Britannic Bold" 
-                   FontWeight="Bold" 
-                   Foreground="#FFC3BFBF"/>
-
-            <Label Content="{Binding User.Name}" 
-                   Margin="15, 5, 15, 15"
-                     Width="200" 
-                     Height="35" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     BorderThickness="0" 
-                   FontFamily="Britannic Bold"
-                   FontWeight="Bold" 
-                   Foreground="#FFC3BFBF"/>
-
-
-            <Label Content="О себе" 
-                   Margin="15, 5, 15, 15"
-                     Width="200" 
-                     Height="35" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     BorderThickness="0" 
-                   FontFamily="Britannic Bold" 
-                   FontWeight="Bold" 
-                   Foreground="#FFC3BFBF"/>
-
-            <Label Content="{Binding User.Date}" 
-                   Margin="15, 5, 15, 15"
-                     Width="200" 
-                     Height="35" 
-                     VerticalContentAlignment="Center" 
-                     FontSize="16"
-                     BorderThickness="0" 
-                   FontFamily="Britannic Bold" 
-                   FontWeight="Bold"
-                   Foreground="#FFC3BFBF"/>
-
-            <Button 
-                Command="{Binding ExitCommand}"
-                x:Name="ExitBtn" 
-                    Height="40"
-                    Width="120"
-            Margin="5, 5, 5, 5"
-                    Template="{StaticResource ButtonTemplate}" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    Cursor="Hand"
-                    IsEnabled="True"
-                >
-                <Button.Content>
-                    <TextBlock Text="Выход" 
-                               FontSize="16" 
-                               Foreground="#FFE2E2E2" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </Button.Content>
-            </Button>
-
-        </StackPanel>
-        <ScrollContentPresenter Grid.Column="1">
-            <ScrollContentPresenter.Content>
-                <StackPanel>
-
-                </StackPanel>
-            </ScrollContentPresenter.Content>
+        <ScrollContentPresenter Grid.Column="1"
+                                x:Name="Posts"
+                                Margin="0,1,0,35">
         </ScrollContentPresenter>
 
 
