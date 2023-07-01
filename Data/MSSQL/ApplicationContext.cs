@@ -1,4 +1,5 @@
-﻿using Journey.MVVM.Models;
+﻿using Journey.MVVM.Models.Tables;
+using Journey.MVVM.Models.Views;
 using Microsoft.EntityFrameworkCore;
 
 namespace Journey.Data.MSSQL
@@ -21,7 +22,6 @@ namespace Journey.Data.MSSQL
                             @"Server=DESKTOP-9N46EPK\DANIIL_BANK1230;"
                            + "DataBase=Journey;"
                            + "Trusted_Connection=true;"
-                           //   + "User ID=user;pwd=user;"
                            + "TrustServerCertificate=true;",
                            sqlServerOptionsAction: sqlOptions =>
                            { _ = sqlOptions.EnableRetryOnFailure(); });

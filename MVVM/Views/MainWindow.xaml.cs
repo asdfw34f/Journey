@@ -3,7 +3,13 @@
 
 using Journey.MVVM.ViewModels;
 using Journey.MVVM.Views.Controls;
+using Journey.MVVM.Views.Pages;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Navigation;
 
 namespace Journey.MVVM.Views
 {
@@ -19,8 +25,25 @@ namespace Journey.MVVM.Views
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
-            PostControl pc = new();
-            Posts.Content = pc;
+
+            // Создаем список новостей
+            List<UserControl> newsList = new List<UserControl>
+            {
+                new PostControl(),
+                new PostControl(),new PostControl(),new PostControl()
+                // Добавьте свои новости здесь
+            };
+
+            // Создаем StackPanel для размещения новостей
+            StackPanel stackPanel = new StackPanel();
+
+            // Добавляем каждую новость в StackPanel
+            foreach (UserControl newsPage in newsList)
+            {
+                stackPanel.Children.Add(newsPage);
+            }
+            // Размещаем StackPanel в элементе ScrollViewer
+            list.Content = stackPanel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

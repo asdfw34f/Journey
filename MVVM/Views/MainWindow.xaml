@@ -2,29 +2,24 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Journey.MVVM.Views"
-        xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1450"
+      d:DesignHeight="800" 
+        d:DesignWidth="1450"
       WindowState="Maximized"
       Loaded="Window_Loaded"
         Title="Journey" 
         Foreground="#FF517ED8">
 
-    <Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>
-
     <Window.Resources>
-        <ResourceDictionary Source="/Res/NewButton.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
     </Window.Resources>
     
     <Window.Background>
         <ImageBrush ImageSource="/Assets/View.png"
                     TileMode="FlipXY"/>
     </Window.Background>
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="210"/>
             <ColumnDefinition Width="1047*"/>
@@ -33,8 +28,7 @@
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" 
-                    Margin="6,317,7,317"   >
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"    >
             <DockPanel>
                 <Image Height="30"
                    Width="30"
@@ -134,14 +128,9 @@
             </DockPanel>
         </StackPanel>
 
-        <Frame Grid.Column="1"
-               x:Name="Posts"
-               Margin="0" 
-               Opacity="0.75" 
-               Padding="5"
-               BorderThickness="0">
-            
-        </Frame>
-        
+
+        <ScrollViewer Grid.Column="1"  >
+            <Frame x:Name="list"/>
+        </ScrollViewer>
     </Grid>
 </Window>

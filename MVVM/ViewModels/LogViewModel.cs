@@ -5,7 +5,7 @@ using Journey.Data.MSSQL;
 using Journey.Infrastructure.Commands;
 using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
-using Journey.MVVM.Models;
+using Journey.MVVM.Models.Tables;
 using Journey.Security;
 using System;
 using System.Linq;
@@ -32,14 +32,13 @@ namespace Journey.MVVM.ViewModels
         }
 
         private string _Login;
-        private string _Password;
-
         public string Login
         {
             get => _Login;
             set => Set(ref _Login, value);
         }
 
+        private string _Password;
         public string Password
         {
             get => _Password;
@@ -72,24 +71,14 @@ namespace Journey.MVVM.ViewModels
                 return;
             }
 
-            Users? user;
-            using (ApplicationContext db = new())
-            {
-                user = db.Users
-                .Where(p => p.Email == Login.ToString() &&
-                p.Password == Password.ToString()).FirstOrDefault();
-            }
+            Hashing hashing = new Hashing();
 
-            if (user != null)
+            if (hashing.EqualsLog(Password).Result)
             {
-                FileLog fl = new FileLog();
-                await fl.WriteLogAsync(user);
-                
                 Navigate navigate = new Navigate();
                 await navigate.ToMainAsync();
             }
         }
-
 
         private Visibility _menuVis = Visibility.Collapsed;
         public Visibility MenuVis

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="1000" d:DesignWidth="800">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Res/NewButton.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
     </UserControl.Resources>
     
     <Grid Margin="0,0,0,0">

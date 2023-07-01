@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Journey.MVVM.Models
+namespace Journey.MVVM.Models.Tables
 {
     [Serializable]
     public class Tickets

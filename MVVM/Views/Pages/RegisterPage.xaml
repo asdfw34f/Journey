@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <Page.Resources>
-        <ResourceDictionary Source="/Res/NewButton.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
     </Page.Resources>
 
     <StackPanel 

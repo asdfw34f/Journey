@@ -1,25 +1,24 @@
-﻿using Journey.MVVM.Models;
+﻿using Journey.MVVM.Models.Tables;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Journey.Infrastructure.Commands.Json
 {
     public class GetJson
     {
-        private string _remoteUri { get; } = "https://raw.githubusercontent.com/Mirkitanov/jsonexmpl/main/avia.jso";
-        private string FileName { get; } = Path.GetTempPath() + "avia.json";
-
-        public List<Tickets>? GetFile()
+        public async Task<List<Tickets>?> GetFile()
         {
+            string file = Path.GetTempPath() + "avia.json";
             try
             {
-                WebClient myWebClient = new();
-                // Concatenate the domain with the Web resource filename.
-                // Download the Web resource and save it into the current filesystem folder.
-                myWebClient.DownloadFile(_remoteUri, FileName);
+                 new WebClient().DownloadFileAsync(
+                     new Uri("https://raw.githubusercontent.com/Mirkitanov/jsonexmpl/main/avia.json"),
+                     file);
             }
             catch (WebException ex)
             {
@@ -29,7 +28,7 @@ namespace Journey.Infrastructure.Commands.Json
                 return null;
             }
 
-            return ReadFile(FileName);
+            return ReadFile(file);
         }
 
         private List<Tickets>? ReadFile(string path)

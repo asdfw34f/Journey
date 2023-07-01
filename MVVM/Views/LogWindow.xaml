@@ -19,7 +19,7 @@
         <vm:LogViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <ResourceDictionary Source="/Res/NewButton.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
     </Window.Resources>
     <Window.Background>
         <ImageBrush TileMode="Tile" ImageSource="/Assets/View.png" Stretch="Fill"/>

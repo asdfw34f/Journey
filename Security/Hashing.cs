@@ -2,35 +2,43 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using Journey.Data.MSSQL;
-using Journey.MVVM.Models;
-using System;
+using Journey.MVVM.Models.Tables;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Journey.Security
 {
     internal class Hashing
     {
-        internal string GetHash(string password)
+        internal byte[] GetHash(string password)
         {
-            return Convert.ToHexString(MD5
-            .Create().ComputeHash(Encoding.UTF8.GetBytes(password)));
+            return MD5
+            .Create().ComputeHash(Encoding.UTF8.GetBytes(password));
         }
 
-        internal bool EqualsLog(string password)
+        internal async Task<bool> EqualsLog(string password)
         {
             if (password == null)
             {
                 return false;
             }
 
-            password = GetHash(password);
-
-            using ApplicationContext db = new();
-            Users? user = db.Users
-                .Where(u => u.Password == password).FirstOrDefault();
-            return user != null;
+            var pwd = GetHash(password);
+            Users? user = null;
+            using (ApplicationContext db = new())
+            {
+                user = db.Users
+                    .Where(u => u.Password == pwd).FirstOrDefault();
+            }
+            if (user != null)
+            {
+                await new FileLog().WriteLogAsync(user);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

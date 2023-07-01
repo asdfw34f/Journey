@@ -10,6 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DataBase\**" />
+    <Compile Remove="pvs\**" />
+    <EmbeddedResource Remove="DataBase\**" />
+    <EmbeddedResource Remove="pvs\**" />
+    <None Remove="DataBase\**" />
+    <None Remove="pvs\**" />
+    <Page Remove="DataBase\**" />
+    <Page Remove="pvs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Button.png" />
     <None Remove="Assets\News.png" />
     <None Remove="Assets\Post.png" />
@@ -21,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="Res\NewButton.xaml" />
+    <Page Remove="Res\TemplateControls.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +52,7 @@
     <Resource Include="Assets\News.png" />
     <Resource Include="Assets\Post.png" />
     <Resource Include="Assets\User.png" />
-    <Resource Include="Res\NewButton.xaml">
+    <Resource Include="Res\TemplateControls.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

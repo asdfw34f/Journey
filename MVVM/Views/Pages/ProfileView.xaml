@@ -8,10 +8,58 @@
       d:DesignHeight="785" 
       d:DesignWidth="1029"
       WindowTitle="Профиль">
+
+    <Page.Resources>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
+    </Page.Resources>
+    
     <Page.Background>
         <ImageBrush ImageSource="/Assets/ProfileView.png"/>
     </Page.Background>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="225*"/>
+            <ColumnDefinition Width="600*"/>
+            <ColumnDefinition Width="210*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="285*"/>
+            <RowDefinition Height="307*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="72*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Margin="10, 5, 25, 3"
+                    VerticalAlignment="Center">
+            <Label 
+                   Style="{StaticResource TextTemplate}"
+                   Height="30"
+                   Content="Demekhin" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <Label 
+                   Style="{StaticResource TextTemplate}"
+                Margin="15, 0, 10, 0"
+                   Height="30"
+                   Content="Daniil" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <Label 
+                   Style="{StaticResource TextTemplate}"
+                Margin="15, 0, 10, 25"
+                   Height="30"
+                   Content="11.08.2004" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock 
+                   Width="150"
+                   Height="100"
+                   Margin="15, 10, 10, 0"
+                   Text="My status... hgiyg yrgdfgfddgf dggyugfu ygf dsfdsfdsd sd s sdf dssd ds sd sdffsd sd  sd fsddsfwe fds  sdfdsfds fsds ds gvufv"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" FontSize="14" Foreground="#FFAFAFAF" MaxHeight="100" MaxWidth="150" TextWrapping="WrapWithOverflow" TextTrimming="WordEllipsis" />
+        </StackPanel>
+
     </Grid>
 </Page>

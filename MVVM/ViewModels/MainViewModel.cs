@@ -3,7 +3,7 @@
 
 using Journey.Infrastructure.Commands;
 using Journey.MVVM.Base;
-using Journey.MVVM.Models;
+using Journey.MVVM.Models.Tables;
 using Journey.Security;
 using System;
 using System.Windows;
@@ -82,8 +82,8 @@ namespace Journey.MVVM.ViewModels
 
         private void OnLoadedMyself(object p)
         {
-            User = new Users();
-            User = App.User;
+        //    User = new Users();
+          //  User = App.User;
         }
 
         public ICommand ExitCommand { get; }

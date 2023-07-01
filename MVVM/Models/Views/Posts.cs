@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Journey.MVVM.Models
+namespace Journey.MVVM.Models.Views
 {
     public class Posts
     {
@@ -13,7 +13,6 @@ namespace Journey.MVVM.Models
         public byte[]? Media { get; set; }
         public int? GroupID { get; set; }
         public DateTime? Created { get; set; }
-
-
+        public string? Name { get; set; }
     }
 }

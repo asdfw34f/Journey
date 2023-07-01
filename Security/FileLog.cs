@@ -1,7 +1,7 @@
 ﻿// This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
-using Journey.MVVM.Models;
+using Journey.MVVM.Models.Tables;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -57,14 +57,7 @@ namespace Journey.Security
 
                 JsonSerializer.Serialize(f, Login);
                 Dispose(f);
-
-                await WriteAppAsync(Login);
             }
-        }
-
-        private async Task WriteAppAsync(Users Login)
-        {
-            App.User = Login;
         }
 
         internal async Task<Users?> ReadLogAsync()
