@@ -12,7 +12,8 @@
         WindowState="Maximized"
         Title="Вход в учётную запись"
         Visibility="{Binding Visable}"
-        IsVisibleChanged="Window_IsVisibleChanged">
+        IsVisibleChanged="Window_IsVisibleChanged"        
+        Foreground="#FF517ED8">
 
     <Window.DataContext>
         <vm:LogViewModel/>
@@ -21,7 +22,7 @@
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush TileMode="Tile" ImageSource="/Assets/Auth.png" Stretch="Fill"/>
+        <ImageBrush TileMode="Tile" ImageSource="/Assets/View.png" Stretch="Fill"/>
     </Window.Background>
 
     <Grid>
@@ -142,10 +143,10 @@
                                TextAlignment="Justify"
                                FontStyle="Italic">
                         Нажмите
-                        <Hyperlink TextDecorations="Underline" 
+                        <Hyperlink 
                              FontWeight="Normal"
                              Cursor="Hand"
-                                   NavigateUri="/MVVM/Views/Pages/RegisterPage.xaml">
+                                   NavigateUri="/MVVM/Views/Pages/RegisterPage.xaml" Foreground="#FF082848" FontStyle="Italic">
                             сюда
                         </Hyperlink>
                         для регистрации

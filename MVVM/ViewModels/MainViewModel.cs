@@ -21,7 +21,7 @@ namespace Journey.MVVM.ViewModels
         private string _Login;
         private string _Password;
         private DateTime _Date;
-        private BitmapImage _Image;
+        private readonly BitmapImage _Image;
         private Image _FinalImage = new();
 
         private Users _User;

@@ -7,7 +7,9 @@ using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models;
 using Journey.Security;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -50,7 +52,7 @@ namespace Journey.MVVM.ViewModels
             return true;
         }
 
-        private void OnEnter(object p)
+        private async void OnEnterAsync(object p)
         {
             if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
             {
@@ -70,17 +72,21 @@ namespace Journey.MVVM.ViewModels
                 return;
             }
 
-            using ApplicationContext db = new();
-            Users? user = db.Users
+            Users? user;
+            using (ApplicationContext db = new())
+            {
+                user = db.Users
                 .Where(p => p.Email == Login.ToString() &&
                 p.Password == Password.ToString()).FirstOrDefault();
+            }
 
             if (user != null)
             {
-                _ = new FileLog()
-                    .WriteLogAsync(user);
-                new Navigate()
-                    .ToMain();
+                FileLog fl = new FileLog();
+                await fl.WriteLogAsync(user);
+                
+                Navigate navigate = new Navigate();
+                await navigate.ToMainAsync();
             }
         }
 
@@ -97,7 +103,7 @@ namespace Journey.MVVM.ViewModels
             Login = string.Empty;
             Password = string.Empty;
 
-            EnterCommand = new LambdaCommand(OnEnter, CanEnter);
+            EnterCommand = new LambdaCommand(OnEnterAsync, CanEnter);
         }
     }
 }

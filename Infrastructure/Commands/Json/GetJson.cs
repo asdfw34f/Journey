@@ -12,18 +12,18 @@ namespace Journey.Infrastructure.Commands.Json
         private string _remoteUri { get; } = "https://raw.githubusercontent.com/Mirkitanov/jsonexmpl/main/avia.jso";
         private string FileName { get; } = Path.GetTempPath() + "avia.json";
 
-        public List<Tickets> GetFile()
+        public List<Tickets>? GetFile()
         {
             try
             {
-                WebClient myWebClient = new WebClient();
+                WebClient myWebClient = new();
                 // Concatenate the domain with the Web resource filename.
                 // Download the Web resource and save it into the current filesystem folder.
                 myWebClient.DownloadFile(_remoteUri, FileName);
             }
             catch (WebException ex)
             {
-                MessageBox.Show(
+                _ = MessageBox.Show(
                     ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error
                     );
                 return null;
@@ -32,19 +32,16 @@ namespace Journey.Infrastructure.Commands.Json
             return ReadFile(FileName);
         }
 
-        private List<Tickets> ReadFile(string path)
+        private List<Tickets>? ReadFile(string path)
         {
             List<Tickets>? tickets;
 
-            using (FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (FileStream file = new(path, FileMode.Open, FileAccess.Read))
             {
                 tickets = JsonSerializer.Deserialize<List<Tickets>>(file);
             }
 
-            if (tickets == null)
-                return null;
-
-            return tickets;
+            return tickets ?? null;
         }
     }
 }

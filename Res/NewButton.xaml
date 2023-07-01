@@ -3,19 +3,13 @@
                     x:Name="NewButton">
     
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
-        <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="10"
+        <Border BorderBrush="White" BorderThickness="1" CornerRadius="20"
                     TextBlock.Foreground="White">
             <Border.Background>
-                <LinearGradientBrush>
-                    <GradientStopCollection>
-                        <GradientStop Offset="1" Color="Blue"></GradientStop>
-                        <GradientStop Offset="0" Color="#FF2FA4FF"></GradientStop>
-                    </GradientStopCollection>
-                </LinearGradientBrush>
+                <ImageBrush ImageSource="/Assets/Button.png" TileMode="FlipXY" Stretch="UniformToFill"/>
+
             </Border.Background>
-            <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
+            <ContentPresenter RecognizesAccessKey="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
         </Border>
     </ControlTemplate>
-    
-
 </ResourceDictionary>

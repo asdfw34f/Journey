@@ -13,15 +13,9 @@ namespace Journey.Security
     {
         private protected class Path
         {
-            internal string FullName
-            {
-                get => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
-            }
+            internal string FullName => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log\user.json";
 
-            internal string Directory
-            {
-                get => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
-            }
+            internal string Directory => System.IO.Path.GetDirectoryName(App.ResourceAssembly.Location) + @"\log";
         }
 
         private readonly Path path = new();
@@ -36,7 +30,7 @@ namespace Journey.Security
             File.Delete(path.FullName);
         }
 
-        internal async Task<bool> WriteLogAsync(Users Login)
+        internal async Task WriteLogAsync(Users Login)
         {
             try
             {
@@ -54,21 +48,26 @@ namespace Journey.Security
                     ex.Message,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
-                return false;
+                
             }
             finally
             {
                 using FileStream f = new(
                     path.FullName, FileMode.OpenOrCreate);
 
-                await JsonSerializer.SerializeAsync<Users>(f, Login);
-
+                JsonSerializer.Serialize(f, Login);
                 Dispose(f);
+
+                await WriteAppAsync(Login);
             }
-            return true;
         }
 
-        internal Users? ReadLogAsync()
+        private async Task WriteAppAsync(Users Login)
+        {
+            App.User = Login;
+        }
+
+        internal async Task<Users?> ReadLogAsync()
         {
             if (!CheckLogFile())
             {

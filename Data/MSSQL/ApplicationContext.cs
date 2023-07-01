@@ -18,7 +18,7 @@ namespace Journey.Data.MSSQL
             // DESKTOP-U2DHO8A\MYSERVER
 
             _ = optionsBuilder.UseSqlServer(
-                            @"Server=.\MYSERVER;"
+                            @"Server=DESKTOP-9N46EPK\DANIIL_BANK1230;"
                            + "DataBase=Journey;"
                            + "Trusted_Connection=true;"
                            //   + "User ID=user;pwd=user;"

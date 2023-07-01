@@ -8,7 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1450"
       WindowState="Maximized"
-      Loaded="Window_Loaded">
+      Loaded="Window_Loaded"
+        Title="Journey" 
+        Foreground="#FF517ED8">
 
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -17,24 +19,27 @@
     <Window.Resources>
         <ResourceDictionary Source="/Res/NewButton.xaml"/>
     </Window.Resources>
+    
     <Window.Background>
-        <ImageBrush ImageSource="/Assets/MainView.png" TileMode="FlipXY"/>
+        <ImageBrush ImageSource="/Assets/View.png"
+                    TileMode="FlipXY"/>
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="239"/>
-            <ColumnDefinition Width="964"/>
-            <ColumnDefinition Width="247*"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="1047*"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="6,317,7,317"   >
-
-
+        <StackPanel Grid.Column="0" 
+                    Margin="6,317,7,317"   >
             <DockPanel>
                 <Image Height="30"
                    Width="30"
-                   Source="/Assets/Profile.png">
+                   Source="/Assets/Profile.png"
+                       Opacity="0.5">
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="/Assets/Profile.png"/>
                     </Image.OpacityMask>
@@ -44,7 +49,7 @@
                 x:Name="ProfileBtn" 
                     Margin="5, 5, 5, 5"
                     Height="40"
-                    Width="180"        
+                    Width="150"        
                     Template="{StaticResource ButtonTemplate}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" 
@@ -64,18 +69,16 @@
                                >Профиль</TextBlock>
                     </Button.Content>
                 </Button>
-
             </DockPanel>
 
             <DockPanel>
                 <Image Height="30"
-                   Width="30" Source="/Assets/News.png" />
-
+                   Width="30" Source="/Assets/News.png" Opacity="0.5" />
 
                 <Button 
                 x:Name="NewsBtn" 
                     Height="40"
-                    Width="180"
+                    Width="150"
             Margin="5, 5, 5, 5"
                     Template="{StaticResource ButtonTemplate}"
                     VerticalAlignment="Center"
@@ -101,13 +104,14 @@
             <DockPanel>
                 <Image Height="30"
                    Width="30"
-                       Source="/Assets/Tickets.png">
+                       Source="/Assets/Tickets.png" Opacity="0.5">
                 </Image>
+                
                 <Button 
                 x:Name="BuyBtn" 
                     Margin="5, 5, 5, 5"
                     Height="40"
-                    Width="180"
+                    Width="150"
                     Template="{StaticResource ButtonTemplate}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" 
@@ -128,15 +132,16 @@
                     </Button.Content>
                 </Button>
             </DockPanel>
-
         </StackPanel>
 
-        <ScrollContentPresenter Grid.Column="1"
-                                x:Name="Posts"
-                                Margin="0,1,0,35">
-        </ScrollContentPresenter>
-
-
-
+        <Frame Grid.Column="1"
+               x:Name="Posts"
+               Margin="0" 
+               Opacity="0.75" 
+               Padding="5"
+               BorderThickness="0">
+            
+        </Frame>
+        
     </Grid>
 </Window>

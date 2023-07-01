@@ -27,7 +27,7 @@ namespace Journey
             bool isLog = log.CheckLogFile();
             if (isLog)
             {
-                User = log.ReadLogAsync();
+                User = log.ReadLogAsync().Result;
                 if (User != null)
                 {
                     MainWindow = new MainWindow();

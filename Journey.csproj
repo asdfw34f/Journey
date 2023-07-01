@@ -2,21 +2,22 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+		  <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\App.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Auth.png" />
-    <None Remove="Assets\MainView.png" />
+    <None Remove="Assets\Button.png" />
     <None Remove="Assets\News.png" />
     <None Remove="Assets\Post.png" />
     <None Remove="Assets\Profile.png" />
+    <None Remove="Assets\ProfileView.png" />
     <None Remove="Assets\Tickets.png" />
     <None Remove="Assets\User.png" />
-    <None Remove="MVVM\Views\News.png" />
+    <None Remove="Assets\View.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,18 +25,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\App.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Auth.png" />
-    <Resource Include="Assets\MainView.png" />
+    <Resource Include="Assets\Button.png" />
+    <Resource Include="Assets\Profile.png" />
+    <Resource Include="Assets\ProfileView.png" />
+    <Resource Include="Assets\Tickets.png" />
+    <Resource Include="Assets\View.png" />
     <Resource Include="Assets\News.png" />
     <Resource Include="Assets\Post.png" />
-    <Resource Include="Assets\Profile.png" />
-    <Resource Include="Assets\Tickets.png" />
     <Resource Include="Assets\User.png" />
-    <Resource Include="MVVM\Views\News.png" />
     <Resource Include="Res\NewButton.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

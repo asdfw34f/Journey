@@ -19,7 +19,7 @@ namespace Journey.MVVM.Views
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
-            PostControl pc = new PostControl();
+            PostControl pc = new();
             Posts.Content = pc;
         }
 

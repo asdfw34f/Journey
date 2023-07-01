@@ -4,12 +4,13 @@
              xmlns:local="clr-namespace:Journey"
              xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
              xmlns:v="clr-namespace:Journey.MVVM.Views"
-             
              Startup="Application_Startup">
+    
     <Application.Resources>
         <DataTemplate x:Name="LoginView" DataType="{x:Type vm:LogViewModel}">
             <v:LogWindow/>
         </DataTemplate>
+        
         <DataTemplate x:Name="MainView" DataType="{x:Type vm:MainViewModel}">
             <v:MainWindow/>
         </DataTemplate>
