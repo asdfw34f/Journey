@@ -7,9 +7,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Journey.Infrastructure.Commands.Json
+namespace Journey.Data
 {
-    public class GetJson
+    public class GetTickets
     {
         public async Task<List<Tickets>?> GetFile()
         {

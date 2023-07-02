@@ -129,7 +129,7 @@
         </StackPanel>
 
 
-        <ScrollViewer Grid.Column="1"  >
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" >
             <Frame x:Name="list"/>
         </ScrollViewer>
     </Grid>

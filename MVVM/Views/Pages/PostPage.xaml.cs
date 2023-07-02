@@ -8,9 +8,9 @@ namespace Journey.MVVM.Views.Controls
     /// <summary>
     /// Логика взаимодействия для PostControl.xaml
     /// </summary>
-    public partial class PostControl : UserControl
+    public partial class PostPage : Page
     {
-        public PostControl()
+        public PostPage()
         {
             InitializeComponent();
         }

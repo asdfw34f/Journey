@@ -26,6 +26,9 @@ namespace Journey.MVVM.Views
             vm = new MainViewModel();
             DataContext = vm;
 
+            list.Content = new ProfileView();
+
+            /*
             // Создаем список новостей
             List<UserControl> newsList = new List<UserControl>
             {
@@ -43,7 +46,7 @@ namespace Journey.MVVM.Views
                 stackPanel.Children.Add(newsPage);
             }
             // Размещаем StackPanel в элементе ScrollViewer
-            list.Content = stackPanel;
+            list.Content = stackPanel;*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
