@@ -2,14 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using Journey.MVVM.ViewModels;
-using Journey.MVVM.Views.Controls;
-using Journey.MVVM.Views.Pages;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Navigation;
 
 namespace Journey.MVVM.Views
 {
@@ -25,12 +18,16 @@ namespace Journey.MVVM.Views
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
-            list.Content = new ProfileView();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             vm.LoadedMyselfCommand.Execute(null);
+        }
+
+        private void Label_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            StackPwd.Visibility = StackPwd.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }

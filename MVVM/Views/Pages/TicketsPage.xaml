@@ -1,43 +1,48 @@
-﻿<Page x:Class="Journey.MVVM.Views.Pages.TicketsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Journey.MVVM.Views.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="785" 
-      d:DesignWidth="1029"
-      Title="TicketsPage">
+﻿<Page
+    x:Class="Journey.MVVM.Views.Pages.TicketsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Journey.MVVM.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TicketsPage"
+    d:DesignHeight="785"
+    d:DesignWidth="1029"
+    mc:Ignorable="d">
 
     <Page.Resources>
-        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml" />
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
-        <StackPanel Grid.Column="1">
-            <Label Margin="25, 50, 25, 0"
-                   Content="Откуда" 
-                   Foreground="#FFC1C1C1"/>
-            
-            <ComboBox Margin="20, 0, 10, 0"
-                      IsManipulationEnabled="True" 
-                      IsTextSearchCaseSensitive="True" FontSize="16"
-                     />
-            
-            <Label Margin="25, 25, 25, 0"
-                   Content="Куда" 
-                   Foreground="#FFC1C1C1"/>
 
-            <ComboBox Margin="20, 0, 10, 0"
-                      IsManipulationEnabled="True" 
-                      IsTextSearchCaseSensitive="True" FontSize="16"
-                     />
+        <StackPanel Grid.Column="1">
+            <Label
+                Margin="25,50,25,0"
+                Content="Откуда"
+                Foreground="#FFC1C1C1" />
+
+            <ComboBox
+                Margin="20,0,10,0"
+                FontSize="16"
+                IsManipulationEnabled="True"
+                IsTextSearchCaseSensitive="True" />
+
+            <Label
+                Margin="25,25,25,0"
+                Content="Куда"
+                Foreground="#FFC1C1C1" />
+
+            <ComboBox
+                Margin="20,0,10,0"
+                FontSize="16"
+                IsManipulationEnabled="True"
+                IsTextSearchCaseSensitive="True" />
 
         </StackPanel>
     </Grid>

@@ -1,105 +1,635 @@
-﻿<Window x:Class="Journey.MVVM.Views.MainWindow"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" 
-        d:DesignWidth="1450"
-      WindowState="Maximized"
-      Loaded="Window_Loaded"
-        Title="Journey" 
-        Foreground="#FF517ED8">
+﻿<Window
+    x:Class="Journey.MVVM.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Journey"
+    d:DesignHeight="800"
+    d:DesignWidth="1450"
+    Cursor=""
+    Foreground="#FF517ED8"
+    Loaded="Window_Loaded"
+    WindowState="Maximized"
+    mc:Ignorable="d">
 
     <Window.Resources>
-        <ResourceDictionary Source="/Res/TemplateControls.xaml"/>
+        <ResourceDictionary Source="/Res/TemplateControls.xaml" />
     </Window.Resources>
-    
+
     <Window.Background>
-        <ImageBrush ImageSource="/Assets/View.png"
-                    TileMode="FlipXY"/>
+        <ImageBrush ImageSource="/Assets/View.png" TileMode="FlipXY" />
     </Window.Background>
-    <Grid >
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"/>
-            <ColumnDefinition Width="1047*"/>
-            <ColumnDefinition Width="210"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="210" />
+            <ColumnDefinition Width="1047*" />
+            <ColumnDefinition />
 
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"    >
-            <DockPanel>
-                <Image Height="30"
-                   Width="30"
-                   Source="/Assets/Profile.png"
-                       Opacity="0.5">
+        <StackPanel
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <DockPanel Margin="5,0,0,20">
+                <Image
+                    Width="30"
+                    Height="30"
+                    Opacity="0.5"
+                    Source="/Assets/Profile.png">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource="/Assets/Profile.png"/>
+                        <ImageBrush ImageSource="/Assets/Profile.png" />
                     </Image.OpacityMask>
                 </Image>
 
-                <Button 
-                x:Name="ProfileBtn" 
-                    Margin="5, 5, 5, 5"
+                <Button
+                    x:Name="ProfileBtn"
+                    Width="150"
                     Height="40"
-                    Width="150"        
-                    Template="{StaticResource ButtonTemplate}"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
+                    VerticalContentAlignment="Center"
                     Cursor="Hand"
-                    IsEnabled="True">
+                    FontStretch="UltraExpanded"
+                    FontWeight="Bold"
+                    IsEnabled="True"
+                    Style="{StaticResource ButtonTemplate}">
                     <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="SemiBold"
-                               FontSize="16" 
-                               FontFamily="Maiandra GD" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Профиль</TextBlock>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Maiandra GD"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="#FFDBE5F1"
+                            TextWrapping="WrapWithOverflow">
+                            Профиль
+                        </TextBlock>
                     </Button.Content>
                 </Button>
             </DockPanel>
 
-            <DockPanel>
-                <Image Height="30"
-                   Width="30"
-                       Source="/Assets/Tickets.png" Opacity="0.5">
-                </Image>
-                
-                <Button 
-                x:Name="BuyBtn" 
-                    Margin="5, 5, 5, 5"
-                    Height="40"
+            <DockPanel Margin="5,0,0,20">
+                <Image
+                    Width="30"
+                    Height="30"
+                    Opacity="0.5"
+                    Source="/Assets/Tickets.png" />
+
+                <Button
+                    x:Name="BuyBtn"
                     Width="150"
-                    Template="{StaticResource ButtonTemplate}"
+                    Height="40"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
+                    VerticalContentAlignment="Center"
                     Cursor="Hand"
-                    IsEnabled="True">
+                    FontStretch="UltraExpanded"
+                    FontWeight="Bold"
+                    IsEnabled="True"
+                    Style="{StaticResource ButtonTemplate}">
                     <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="SemiBold"
-                               FontSize="16" 
-                               FontFamily="Maiandra GD" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Билеты</TextBlock>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Maiandra GD"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="#FFDBE5F1"
+                            TextWrapping="WrapWithOverflow">
+                            Билеты
+                        </TextBlock>
                     </Button.Content>
                 </Button>
             </DockPanel>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" >
-            <Frame x:Name="list"/>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <Frame x:Name="list">
+                <Frame.Content>
+                    <Page WindowTitle="Профиль">
+                        <Page.Resources>
+                            <ResourceDictionary Source="/Res/TemplateControls.xaml" />
+                        </Page.Resources>
+
+                        <Page.Background>
+                            <ImageBrush ImageSource="/Assets/ProfileView.png" />
+                        </Page.Background>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="269*" />
+                                <ColumnDefinition Width="698*" />
+                                <ColumnDefinition Width="272*" />
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="296*" />
+                                <RowDefinition Height="309*" />
+                                <RowDefinition Height="101*" />
+                                <RowDefinition Height="79*" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Margin="33,26,34,25"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                                <Button
+                                    Width="165"
+                                    Height="40"
+                                    Margin="0,0,25,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"
+                                    FontWeight="Bold"
+                                    Style="{StaticResource ButtonTemplate}">
+
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.6" Color="#FFDDDDDD" />
+                                    </Button.Background>
+                                    <Button.Content>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            FontFamily="Maiandra GD"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="#FFDBE5F1"
+                                            TextAlignment="Center"
+                                            TextWrapping="WrapWithOverflow">
+                                            Редактировать профиль
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button
+                                    Width="165"
+                                    Height="40"
+                                    Margin="0,15,25,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"
+                                    FontWeight="Bold"
+                                    Style="{StaticResource ButtonTemplate}">
+
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.6" Color="#FFDDDDDD" />
+                                    </Button.Background>
+                                    <Button.Content>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            FontFamily="Maiandra GD"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="#FFDBE5F1"
+                                            TextAlignment="Center"
+                                            TextWrapping="WrapWithOverflow">
+                                            Приватность
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button
+                                    Width="165"
+                                    Height="40"
+                                    Margin="0,15,25,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"
+                                    FontWeight="Bold"
+                                    Style="{StaticResource ButtonTemplate}">
+
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.3" Color="#FFDDDDDD" />
+                                    </Button.Background>
+                                    <Button.Content>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            FontFamily="Maiandra GD"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="#FFDBE5F1"
+                                            TextAlignment="Center"
+                                            TextWrapping="WrapWithOverflow">
+                                            Безопасность
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button
+                                    Width="165"
+                                    Height="40"
+                                    Margin="0,15,25,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"
+                                    FontWeight="Bold"
+                                    Style="{StaticResource ButtonTemplate}">
+
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.3" Color="#FFDDDDDD" />
+                                    </Button.Background>
+                                    <Button.Content>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            FontFamily="Maiandra GD"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="#FFDBE5F1"
+                                            TextAlignment="Center"
+                                            TextWrapping="WrapWithOverflow">
+                                            Подписки
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button
+                                    Width="165"
+                                    Height="40"
+                                    Margin="0,15,25,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"
+                                    FontWeight="Bold"
+                                    Style="{StaticResource ButtonTemplate}">
+
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.3" Color="#FFDDDDDD" />
+                                    </Button.Background>
+                                    <Button.Content>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            FontFamily="Maiandra GD"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="#FFDBE5F1"
+                                            TextAlignment="Center"
+                                            TextWrapping="WrapWithOverflow">
+                                            Общие настройки
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.RowSpan="4"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                                <Frame HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                    <Frame.Content>
+                                        <Page
+                                            Margin="0,0,20,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                            <Grid>
+                                                <StackPanel VerticalAlignment="Center" d:LayoutOverrides="Height">
+                                                    <DockPanel>
+                                                        <StackPanel>
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Эл. почта"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <TextBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    AcceptsReturn="True"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                    MaxLines="1"
+                                                                    MinLines="1"
+                                                                    SelectionTextBrush="Black"
+                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
+                                                                    TextAlignment="Center"
+                                                                         MaxLength="50" />
+                                                            </Border>
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Имя"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <TextBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    AcceptsReturn="True"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                    MaxLines="1"
+                                                                    MinLines="1"
+                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
+                                                                    TextAlignment="Center"
+                                                                         MaxLength="50" />
+                                                            </Border>
+
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Фамилия"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <TextBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    AcceptsReturn="True"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                    MaxLines="1"
+                                                                    MinLines="1"
+                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
+                                                                    TextAlignment="Center"
+                                                                         MaxLength="50" />
+                                                            </Border>
+
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Дата рождения"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7" />
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <DatePicker
+                                                                    Width="185"
+                                                                    Height="30"
+                                                                    Margin="0,0,0,5"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    BorderBrush="{x:Null}"
+                                                                    BorderThickness="0"
+                                                                    ClipToBounds="True"
+                                                                    FirstDayOfWeek="Monday"
+                                                                    FontFamily="Yu Gothic UI Light"
+                                                                    FontSize="18"
+                                                                    Foreground="Black"
+                                                                    IsTodayHighlighted="False"
+                                                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                                    SelectedDateFormat="Long"
+                                                                    UseLayoutRounding="False" />
+                                                            </Border>
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="О себе"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="65"
+                                                                MinWidth="195"
+                                                                MinHeight="40"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <TextBox
+                                                                    Width="195"
+                                                                    Height="65"
+                                                                    Margin="0"
+                                                                    HorizontalContentAlignment="Stretch"
+                                                                    VerticalContentAlignment="Stretch"
+                                                                    AcceptsReturn="True"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                    MaxLines="1"
+                                                                    MinLines="1"
+                                                                    Text="123456 8901234 6789012 456789012 4567890123 567890"
+                                                                    TextAlignment="Center"
+                                                                    TextWrapping="WrapWithOverflow"
+                                                                         MaxLength="50" />
+                                                            </Border>
+                                                        </StackPanel>
+
+                                                        <StackPanel
+                                                            x:Name="StackPwd"
+                                                            Margin="15"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Visibility="Visible">
+
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Текущий пароль"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7"
+                                                                Visibility="Visible" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <PasswordBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                             MaxLength="50" />
+                                                            </Border>
+
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Новый пароль"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7"
+                                                                Visibility="Visible" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <PasswordBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                             MaxLength="50" />
+                                                            </Border>
+
+                                                            <Label
+                                                                VerticalContentAlignment="Center"
+                                                                BorderThickness="0"
+                                                                Content="Новый пароль"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Foreground="#FFA7A7A7"
+                                                                Visibility="Visible" />
+
+                                                            <Border
+                                                                Width="200"
+                                                                Height="35"
+                                                                Padding="5"
+                                                                Background="White"
+                                                                BorderThickness="0"
+                                                                CornerRadius="20">
+                                                                <PasswordBox
+                                                                    Width="195"
+                                                                    Height="35"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    VerticalContentAlignment="Center"
+                                                                    Background="Transparent"
+                                                                    BorderBrush="Transparent"
+                                                                    BorderThickness="0"
+                                                                    FontSize="16"
+                                                                             MaxLength="50" />
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </DockPanel>
+
+                                                    <Label
+                                                        Width="115"
+                                                        Height="30"
+                                                        Margin="20,15,0,0"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Content="Сменить пароль"
+                                                        Cursor="Hand"
+                                                        FontSize="14"
+                                                        Foreground="#FFA7A7A7"
+                                                        MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+
+                                                    <Label
+                                                        Width="160"
+                                                        Height="30"
+                                                        Margin="20,0,0,15"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Content="Сменить фото профиля"
+                                                        FontSize="14"
+                                                        Foreground="#FFA7A7A7" />
+
+                                                    <Button
+                                                        Width="140"
+                                                        Height="30"
+                                                        Margin="0,20,0,0"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Cursor="Hand"
+                                                        Style="{StaticResource ButtonTemplate}">
+
+                                                        <Label
+                                                            MinWidth="20"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            HorizontalContentAlignment="Right"
+                                                            VerticalContentAlignment="Stretch"
+                                                            Content="Сохранить" />
+
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Page>
+                                    </Frame.Content>
+                                </Frame>
+
+                            </StackPanel>
+                        </Grid>
+                    </Page>
+                </Frame.Content>
+            </Frame>
         </ScrollViewer>
     </Grid>
 </Window>

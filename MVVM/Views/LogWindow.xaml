@@ -11,7 +11,6 @@
         WindowState="Maximized"
         Title="Вход в учётную запись"
         Visibility="{Binding Visable}"
-        IsVisibleChanged="Window_IsVisibleChanged"        
         Foreground="#FF517ED8">
 
     <Window.DataContext>
@@ -157,7 +156,7 @@
                 x:Name="EnterBTN" 
                     Margin="5, 35, 5, 0"
                     Height="30"
-                    Template="{StaticResource ButtonTemplate}"
+                    Style="{StaticResource ButtonTemplate}"
                     Width="150"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" 
