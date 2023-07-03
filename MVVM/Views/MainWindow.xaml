@@ -67,36 +67,6 @@
 
             <DockPanel>
                 <Image Height="30"
-                   Width="30" Source="/Assets/News.png" Opacity="0.5" />
-
-                <Button 
-                x:Name="NewsBtn" 
-                    Height="40"
-                    Width="150"
-            Margin="5, 5, 5, 5"
-                    Template="{StaticResource ButtonTemplate}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    VerticalContentAlignment="Center" 
-                    FontStretch="UltraExpanded" 
-                    FontWeight="Bold" 
-                    Cursor="Hand"
-                    IsEnabled="True">
-                    <Button.Content>
-                        <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="SemiBold"
-                               FontSize="16" 
-                               FontFamily="Maiandra GD" 
-                               Foreground="#FFDBE5F1" 
-                               TextWrapping="WrapWithOverflow"
-                               >Новости</TextBlock>
-                    </Button.Content>
-                </Button>
-            </DockPanel>
-
-            <DockPanel>
-                <Image Height="30"
                    Width="30"
                        Source="/Assets/Tickets.png" Opacity="0.5">
                 </Image>
@@ -127,7 +97,6 @@
                 </Button>
             </DockPanel>
         </StackPanel>
-
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" >
             <Frame x:Name="list"/>

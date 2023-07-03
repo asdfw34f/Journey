@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Journey"
         xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
-        xmlns:pages="clr-namespace:Journey.MVVM.Views.Pages"
         xmlns:w="clr-namespace:Journey.Infrastructure.Helpers"
         mc:Ignorable="d"
         Height="650" Width="1200"

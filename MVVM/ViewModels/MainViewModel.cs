@@ -19,12 +19,9 @@ namespace Journey.MVVM.ViewModels
         private string _Surname;
         private string _Description;
         private string _Login;
-        private string _Password;
-        private DateTime _Date;
+        private string _Date;
         private readonly BitmapImage _Image;
         private Image _FinalImage = new();
-
-        private Users _User;
 
         public Image FinalImage
         {
@@ -32,22 +29,10 @@ namespace Journey.MVVM.ViewModels
             set => Set(ref _FinalImage, value);
         }
 
-        public Users User
-        {
-            get => _User;
-            set => Set(ref _User, value);
-        }
-
         public string Login
         {
             get => _Login;
             set => Set(ref _Login, value);
-        }
-
-        public string Password
-        {
-            get => _Password;
-            set => Set(ref _Password, value);
         }
 
         public string Name
@@ -68,7 +53,7 @@ namespace Journey.MVVM.ViewModels
             set => Set(ref _Description, value);
         }
 
-        public DateTime Date
+        public string Date
         {
             get => _Date;
             set => Set(ref _Date, value);
@@ -82,8 +67,14 @@ namespace Journey.MVVM.ViewModels
 
         private void OnLoadedMyself(object p)
         {
-        //    User = new Users();
-          //  User = App.User;
+            Users? users =  new FileLog().ReadLogAsync().Result;
+            Login = users.Email;
+            Name = users.Name;
+            Surname = users.Surname;
+            Date = $"{users.Date.Value:f}";
+
+            //    User = new Users();
+            //  User = App.User;
         }
 
         public ICommand ExitCommand { get; }

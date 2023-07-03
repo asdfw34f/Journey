@@ -11,7 +11,7 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class LogWindow : Window
     {
-        private readonly LogViewModel context;
+        private LogViewModel context;
         public LogWindow()
         {
             InitializeComponent();

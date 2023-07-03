@@ -1,5 +1,4 @@
 ﻿using Journey.MVVM.Models.Tables;
-using Journey.MVVM.Models.Views;
 using Microsoft.EntityFrameworkCore;
 
 namespace Journey.Data.MSSQL
@@ -7,8 +6,6 @@ namespace Journey.Data.MSSQL
     public class ApplicationContext : DbContext
     {
         public DbSet<Users>? Users { get; set; } = null;
-        public DbSet<Posts>? Posts { get; set; } = null;
-        public DbSet<Groups>? Groups { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,5 +23,7 @@ namespace Journey.Data.MSSQL
                            sqlServerOptionsAction: sqlOptions =>
                            { _ = sqlOptions.EnableRetryOnFailure(); });
         }
+
+        
     }
 }
