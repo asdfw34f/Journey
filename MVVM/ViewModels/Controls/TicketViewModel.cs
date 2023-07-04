@@ -1,6 +1,11 @@
 ﻿using Journey.Data.GetData;
+using Journey.Data.MSSQL;
+using Journey.Infrastructure.Commands;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models.Tables;
+using Journey.Security;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Journey.MVVM.ViewModels.Controls
 {
@@ -14,6 +19,13 @@ namespace Journey.MVVM.ViewModels.Controls
         private string? _endDate;
         private string? _price;
         private readonly string? _SearchToken;
+        private string _token;
+
+        public string Token
+        {
+            get => _token;
+            set => Set(ref _token, value);
+        }
 
         public string StartCity
         {
@@ -45,9 +57,36 @@ namespace Journey.MVVM.ViewModels.Controls
             set => Set(ref _price, value);
         }
 
+        public ICommand AddTicketCommand { get; }
+        private bool CanAddTicket(object p)
+        {
+            return true;
+        }
+        private void OnAddTicket(object p)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                FileLog log = new FileLog();
+                int c = db.Favorites.Count();
+                c++;
+                db.Favorites.Add(new Favorites() {Email = log.ReadLog().Email, ID= c, Token=Token});
+                db.SaveChangesAsync();
+            }
+        }
+
+
         public TicketViewModel()
         {
             Tickets = GetTickets.GetNext();
+            Token = Tickets.SearchToken;
+            StartCity = Tickets.StartCity;
+            EndCity = Tickets.EndCity;
+            StartDate = $"{Tickets.StartDate:f}";
+            EndDate = $"{Tickets.EndDate:f}";
+            Price = Tickets.Price.ToString();
+
+            AddTicketCommand = new LambdaCommand(OnAddTicket, CanAddTicket);
+
         }
     }
 }

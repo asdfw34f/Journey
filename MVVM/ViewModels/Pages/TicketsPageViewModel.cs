@@ -1,7 +1,5 @@
-﻿using Journey.Data.GetData;
-using Journey.MVVM.Models.Tables;
+﻿using Journey.MVVM.Models.Tables;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -21,13 +19,13 @@ namespace Journey.MVVM.ViewModels.Pages
         }
         private void OnSearch(object p)
         {
-          //  List<Tickets> search = tickets.Where(t => t.startCity == _start && t.endCity == _end).ToList();
+            //  List<Tickets> search = tickets.Where(t => t.startCity == _start && t.endCity == _end).ToList();
 
         }
 
         private TicketsPageViewModel()
         {
-         //   tickets = GetTickets.GetNext();
+            //   tickets = GetTickets.GetNext();
         }
     }
 }

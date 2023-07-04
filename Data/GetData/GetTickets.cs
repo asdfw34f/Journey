@@ -12,7 +12,7 @@ namespace Journey.Data.GetData
     {
         public static List<Tickets>? Tickets { get; private set; }
 
-        private static int count = -1;
+        public static int count = -1;
 
         public static Tickets? GetNext()
         {
@@ -27,9 +27,11 @@ namespace Journey.Data.GetData
 
             if (File.Exists(file_name) == true)
             {
-                var list = JsonConvert.DeserializeObject<List<Tickets>>(File.ReadAllText(file_name));
+                List<Tickets>? list = JsonConvert.DeserializeObject<List<Tickets>>(File.ReadAllText(file_name));
                 if (list != null)
+                {
                     Tickets = list;
+                }
             }
         }
     }

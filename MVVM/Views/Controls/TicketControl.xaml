@@ -5,13 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Journey.MVVM.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="viewm"
+    xmlns:vm="clr-namespace:Journey.MVVM.ViewModels.Controls"
+    Margin="0,5,0,0"
     d:DesignHeight="250"
     d:DesignWidth="600"
-    Margin="0, 5, 0, 0"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="UserControl_Loaded">
 
     <Grid>
+        <Grid.DataContext>
+            <vm:TicketViewModel />
+        </Grid.DataContext>
         <DockPanel>
             <DockPanel.Background>
                 <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
@@ -37,7 +41,7 @@
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
-                Content="id23892938048"
+                Content="{Binding Token}"
                 FontFamily="Verdana"
                 FontSize="10"
                 Foreground="#FF00CAFF">
@@ -45,8 +49,11 @@
                     <RotateTransform Angle="270" />
                 </Label.LayoutTransform>
             </Label>
-            <Image Width="35" Height="35" />
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <StackPanel
+                Margin="75,0,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
 
                 <DockPanel Margin="0,10" HorizontalAlignment="Center">
                     <TextBlock
@@ -56,7 +63,7 @@
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#FF61B3D6"
-                        Text="Moscow"
+                        Text="{Binding StartCity}"
                         TextAlignment="Right" />
 
                     <Label
@@ -74,7 +81,7 @@
                         FontSize="16"
                         FontWeight="Bold"
                         Foreground="#FF61B3D6"
-                        Text="New York"
+                        Text="{Binding EndCity}"
                         TextAlignment="Left" />
                 </DockPanel>
 
@@ -94,10 +101,10 @@
                             Foreground="#FFB1B1B1" />
 
                         <TextBlock
-                            Width="130"
+                            Width="200"
                             FontSize="16"
                             Foreground="#FF00B3FF"
-                            Text="12.12.2023 17:40"
+                            Text="{Binding StartDate}"
                             TextAlignment="Left" />
                     </StackPanel>
 
@@ -112,10 +119,10 @@
                             Foreground="#FFB1B1B1" />
 
                         <TextBlock
-                            Width="130"
+                            Width="200"
                             FontSize="16"
                             Foreground="#FF00B3FF"
-                            Text="13.12.2023 17:40"
+                            Text="{Binding EndDate}"
                             TextAlignment="Left" />
                     </StackPanel>
                 </DockPanel>
@@ -142,7 +149,7 @@
                         FontSize="13"
                         FontWeight="Bold"
                         Foreground="#FF00B3FF"
-                        Text="7000"
+                        Text="{Binding Price}"
                         TextAlignment="Right" />
 
                     <Label
@@ -157,6 +164,21 @@
                 </DockPanel>
 
             </StackPanel>
+
+            <Button
+            Command="{Binding AddTicketCommand}"
+            x:Name="fav"
+                Width="35"
+                Height="40"
+                Margin="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                BorderBrush="{x:Null}"
+                Padding="0">
+                <Button.Content>
+                    <Image Source="/Assets/LikeOff.png" />
+                </Button.Content>
+            </Button>
 
         </DockPanel>
     </Grid>

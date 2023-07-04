@@ -4,6 +4,7 @@
 using Journey.Data.GetData;
 using Journey.MVVM.ViewModels;
 using Journey.MVVM.Views.Pages;
+using System;
 using System.Windows;
 
 namespace Journey.MVVM.Views
@@ -21,6 +22,7 @@ namespace Journey.MVVM.Views
             vm = new MainViewModel();
             DataContext = vm;
             profile.DataContext = vm;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +44,24 @@ namespace Journey.MVVM.Views
         {
             GetTickets.GetFile();
             list.Content = new TicketsPage();
+            BuyBtn.IsEnabled = false;
+            ProfileBtn.IsEnabled = true;
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            GC.Collect(); // find finalizable objects
+            GC.WaitForPendingFinalizers(); // wait until finalizers executed
+            GC.Collect(); // collect finalized objects
+
+        }
+
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GetTickets.count = -1;
+            list.GoBack();
+            ProfileBtn.IsEnabled = false;
+            BuyBtn.IsEnabled = true;
         }
     }
 }

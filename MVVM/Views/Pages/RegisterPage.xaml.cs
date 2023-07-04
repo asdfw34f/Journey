@@ -1,6 +1,7 @@
 ﻿// This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -33,6 +34,10 @@ namespace Journey.MVVM.Views.Pages
             if (NavigationService.CanGoBack)
             {
                 NavigationService.GoBack();
+                GC.Collect(); // find finalizable objects
+                GC.WaitForPendingFinalizers(); // wait until finalizers executed
+                GC.Collect(); // collect finalized objects
+
             }
         }
     }
