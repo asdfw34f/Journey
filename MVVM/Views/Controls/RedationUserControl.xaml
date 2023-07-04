@@ -13,9 +13,5 @@
         <ResourceDictionary Source="/Res/TemplateControls.xaml" />
     </UserControl.Resources>
 
-    <Grid>
-
-        
-
-    </Grid>
+    <Grid />
 </UserControl>

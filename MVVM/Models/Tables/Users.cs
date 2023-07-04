@@ -12,5 +12,6 @@ namespace Journey.MVVM.Models.Tables
         public string? Surname { get; set; }
         public DateTime? Date { get; set; }
         public byte[]? Image { get; set; }
+        public string? Status { get; set; }
     }
 }

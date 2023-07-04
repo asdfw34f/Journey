@@ -21,7 +21,7 @@ namespace Journey
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             FileLog log = new();
-            if (log.CheckLogFile() && log.ReadLogAsync().Result != null)
+            if (log.CheckLogFile() && log.ReadLog() != null)
             {
                 MainWindow = new MainWindow();
                 MainWindow.Show();

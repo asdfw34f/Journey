@@ -2,6 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using Journey.Infrastructure.Commands;
+using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models.Tables;
 using Journey.Security;
@@ -9,18 +10,16 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace Journey.MVVM.ViewModels
 {
     internal class MainViewModel : NotifyPropertyChanged
     {
         private string _Name;
-        private string _Surname;
+        private string _Surname = "nsjifnjoildsf";
         private string _Description;
         private string _Login;
         private string _Date;
-        private readonly BitmapImage _Image;
         private Image _FinalImage = new();
 
         public Image FinalImage
@@ -29,7 +28,7 @@ namespace Journey.MVVM.ViewModels
             set => Set(ref _FinalImage, value);
         }
 
-        public string Login
+        public string? Login
         {
             get => _Login;
             set => Set(ref _Login, value);
@@ -37,19 +36,19 @@ namespace Journey.MVVM.ViewModels
 
         public string Name
         {
-            get => Name;
+            get => _Name;
             set => Set(ref _Name, value);
         }
 
         public string Surname
         {
-            get => Surname;
+            get => _Surname;
             set => Set(ref _Surname, value);
         }
 
         public string Description
         {
-            get => Description;
+            get => _Description;
             set => Set(ref _Description, value);
         }
 
@@ -60,35 +59,25 @@ namespace Journey.MVVM.ViewModels
         }
 
         public ICommand LoadedMyselfCommand { get; }
-        private bool CanLoadedMyself(object p)
-        {
-            return true;
-        }
-
+        private bool CanLoadedMyself(object p) => true;
         private void OnLoadedMyself(object p)
         {
-            Users? users =  new FileLog().ReadLogAsync().Result;
+            Users users =  new FileLog().ReadLog();
             Login = users.Email;
             Name = users.Name;
             Surname = users.Surname;
             Date = $"{users.Date.Value:f}";
-
-            //    User = new Users();
-            //  User = App.User;
+            Description = users.Status;
         }
 
         public ICommand ExitCommand { get; }
-        private bool CanExit(object p)
+        private bool CanExit(object p) => true;
+        private async void OnExit(object p)
         {
-            return true;
+            new FileLog().FileDelete();
+            await new Navigate().ToLogAsync();
         }
 
-        private void OnExit(object p)
-        {
-            FileLog log = new();
-            log.FileDelete();
-            Application.Current.Shutdown();
-        }
 
         public MainViewModel()
         {

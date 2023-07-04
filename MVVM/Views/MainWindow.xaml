@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Journey.MVVM.ViewModels"
     Title="Journey"
     d:DesignHeight="800"
     d:DesignWidth="1450"
@@ -13,6 +14,8 @@
     WindowState="Maximized"
     mc:Ignorable="d">
 
+
+
     <Window.Resources>
         <ResourceDictionary Source="/Res/TemplateControls.xaml" />
     </Window.Resources>
@@ -21,6 +24,7 @@
         <ImageBrush ImageSource="/Assets/View.png" TileMode="FlipXY" />
     </Window.Background>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="210" />
             <ColumnDefinition Width="1047*" />
@@ -205,7 +209,8 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     VerticalContentAlignment="Center"
-                                    Cursor="Hand"
+                                    Click="Button_Click"
+                                    Cursor=""
                                     FontWeight="Bold"
                                     Style="{StaticResource ButtonTemplate}">
 
@@ -223,7 +228,7 @@
                                             Foreground="#FFDBE5F1"
                                             TextAlignment="Center"
                                             TextWrapping="WrapWithOverflow">
-                                            Безопасность
+                                            Выход
                                         </TextBlock>
                                     </Button.Content>
                                 </Button>
@@ -302,7 +307,12 @@
                                         <Page
                                             Margin="0,0,20,0"
                                             HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
+                                            VerticalAlignment="Center"
+                                            x:Name="profile">
+
+                                            <Page.DataContext>
+                                                <vm:MainViewModel />
+                                            </Page.DataContext>
                                             <Grid>
                                                 <StackPanel VerticalAlignment="Center" d:LayoutOverrides="Height">
                                                     <DockPanel>
@@ -334,12 +344,13 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
+                                                                    InputScope="EmailUserName"
+                                                                    MaxLength="50"
                                                                     MaxLines="1"
                                                                     MinLines="1"
                                                                     SelectionTextBrush="Black"
-                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
-                                                                    TextAlignment="Center"
-                                                                         MaxLength="50" />
+                                                                    Text="{Binding Login}"
+                                                                    TextAlignment="Center" />
                                                             </Border>
                                                             <Label
                                                                 VerticalContentAlignment="Center"
@@ -368,11 +379,12 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
+                                                                    InputScope="PersonalFullName"
+                                                                    MaxLength="50"
                                                                     MaxLines="1"
                                                                     MinLines="1"
-                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
-                                                                    TextAlignment="Center"
-                                                                         MaxLength="50" />
+                                                                    Text="{Binding Name}"
+                                                                    TextAlignment="Center" />
                                                             </Border>
 
                                                             <Label
@@ -398,15 +410,11 @@
                                                                     HorizontalContentAlignment="Center"
                                                                     VerticalContentAlignment="Center"
                                                                     AcceptsReturn="True"
-                                                                    Background="Transparent"
-                                                                    BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
-                                                                    MaxLines="1"
-                                                                    MinLines="1"
-                                                                    Text="dsdscsdcfsdvdsvssdvsvssdffgvdf"
-                                                                    TextAlignment="Center"
-                                                                         MaxLength="50" />
+                                                                    InputScope="PersonalSurname"
+                                                                    Text="{Binding Surname}"
+                                                                    TextAlignment="Center" />
                                                             </Border>
 
                                                             <Label
@@ -442,6 +450,7 @@
                                                                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                                     SelectedDateFormat="Long"
+                                                                    Text="{Binding Date}"
                                                                     UseLayoutRounding="False" />
                                                             </Border>
                                                             <Label
@@ -471,12 +480,13 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
+                                                                    InputScope="Default"
+                                                                    MaxLength="50"
                                                                     MaxLines="1"
                                                                     MinLines="1"
                                                                     Text="123456 8901234 6789012 456789012 4567890123 567890"
                                                                     TextAlignment="Center"
-                                                                    TextWrapping="WrapWithOverflow"
-                                                                         MaxLength="50" />
+                                                                    TextWrapping="WrapWithOverflow" />
                                                             </Border>
                                                         </StackPanel>
 
@@ -514,7 +524,7 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
-                                                                             MaxLength="50" />
+                                                                    MaxLength="50" />
                                                             </Border>
 
                                                             <Label
@@ -544,7 +554,7 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
-                                                                             MaxLength="50" />
+                                                                    MaxLength="50" />
                                                             </Border>
 
                                                             <Label
@@ -574,7 +584,7 @@
                                                                     BorderBrush="Transparent"
                                                                     BorderThickness="0"
                                                                     FontSize="16"
-                                                                             MaxLength="50" />
+                                                                    MaxLength="50" />
                                                             </Border>
                                                         </StackPanel>
                                                     </DockPanel>
@@ -617,14 +627,12 @@
                                                             HorizontalContentAlignment="Right"
                                                             VerticalContentAlignment="Stretch"
                                                             Content="Сохранить" />
-
                                                     </Button>
                                                 </StackPanel>
                                             </Grid>
                                         </Page>
                                     </Frame.Content>
                                 </Frame>
-
                             </StackPanel>
                         </Grid>
                     </Page>

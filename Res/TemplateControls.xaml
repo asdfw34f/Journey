@@ -36,36 +36,34 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TextBox.Ellipse"
-           TargetType="{x:Type TextBox}">
-        <!--Here you can set the default properties of this style.-->
-        <Setter Property="FontWeight"
-                Value="Bold" />
+    <Style x:Key="TextBox.Ellipse" TargetType="{x:Type TextBox}">
+        <!--  Here you can set the default properties of this style.  -->
+        <Setter Property="FontWeight" Value="Bold" />
 
-        <!--You can change the shape of the control by setting the template-->
+        <!--  You can change the shape of the control by setting the template  -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
-                        <Ellipse x:Name="Border"
-                                 Stroke="#FF393785"
-                                    
-                                 StrokeThickness="0" Fill="White">
-                        </Ellipse>
-                        <!-- The implementation places the Content into the ScrollViewer. 
-                             It must be named PART_ContentHost 
-                             for the control to function -->
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                      Background="Transparent"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center" />
+                        <Ellipse
+                            x:Name="Border"
+                            Fill="White"
+                            Stroke="#FF393785"
+                            StrokeThickness="0" />
+                        <!--
+                            The implementation places the Content into the ScrollViewer.
+                            It must be named PART_ContentHost
+                            for the control to function
+                        -->
+                        <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="Transparent" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled"
-                                 Value="False">
-                            <Setter Property="Fill"
-                                    Value="#000"
-                                    TargetName="Border" />
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Fill" Value="#000" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

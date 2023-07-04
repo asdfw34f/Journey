@@ -258,7 +258,7 @@
             FontStretch="UltraExpanded"
             FontWeight="Bold"
             IsEnabled="True"
-            Template="{StaticResource ButtonTemplate}">
+            Style="{StaticResource ButtonTemplate}">
             <Button.Background>
                 <SolidColorBrush Opacity="0.6" Color="#FFDDDDDD" />
             </Button.Background>

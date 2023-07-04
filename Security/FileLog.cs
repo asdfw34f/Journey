@@ -60,7 +60,7 @@ namespace Journey.Security
             }
         }
 
-        internal async Task<Users?> ReadLogAsync()
+        internal Users ReadLog()
         {
             if (!CheckLogFile())
             {

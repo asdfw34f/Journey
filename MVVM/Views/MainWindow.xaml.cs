@@ -18,6 +18,7 @@ namespace Journey.MVVM.Views
             InitializeComponent();
             vm = new MainViewModel();
             DataContext = vm;
+            profile.DataContext = vm;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -29,5 +30,11 @@ namespace Journey.MVVM.Views
         {
             StackPwd.Visibility = StackPwd.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.ExitCommand.Execute(null);
+        }
+
     }
 }
