@@ -9,20 +9,20 @@ namespace Journey.Infrastructure.Navigate
     internal class Navigate
     {
 
-        public async Task ToMainAsync()
+        public Task ToMainAsync()
         {
             App.Current.MainWindow = new MainWindow();
             App.Current.Windows[0].Close();
             App.Current.MainWindow.Show();
-            return;
+            return Task.CompletedTask;
         }
 
-        public async Task ToLogAsync()
+        public Task ToLogAsync()
         {
             App.Current.MainWindow = new LogWindow();
             App.Current.Windows[1].Close();
             App.Current.MainWindow.Show();
-            return;
+            return Task.CompletedTask;
         }
 
         public Navigate()

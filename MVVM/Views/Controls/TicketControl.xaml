@@ -1,18 +1,19 @@
-﻿<Page
+﻿<UserControl
     x:Class="Journey.MVVM.Views.Controls.TicketControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Journey.MVVM.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="TicketControl"
+    xmlns:vm="viewm"
     d:DesignHeight="250"
     d:DesignWidth="600"
+    Margin="0, 5, 0, 0"
     mc:Ignorable="d">
 
     <Grid>
-        <StackPanel>
-            <StackPanel.Background>
+        <DockPanel>
+            <DockPanel.Background>
                 <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
                     <LinearGradientBrush.RelativeTransform>
                         <TransformGroup>
@@ -27,114 +28,136 @@
                     <GradientStop Offset="0.946" Color="#FF383838" />
                     <GradientStop Offset="1" Color="#FF878787" />
                 </LinearGradientBrush>
-            </StackPanel.Background>
-            <DockPanel Margin="0,10" HorizontalAlignment="Center">
-                <TextBlock
-                    Width="200"
-                    Padding="5"
-                    Background="Black"
-                    FontSize="16"
-                    FontWeight="Bold"
-                    Foreground="#FF61B3D6"
-                    Text="Moscow"
-                    TextAlignment="Right" />
 
-                <Label
-                    Height="25"
-                    Padding="0"
-                    Content=" —&gt; "
-                    FontSize="18"
-                    FontWeight="Bold"
-                    Foreground="#FF00B3FF" />
-
-                <TextBlock
-                    Width="200"
-                    Padding="5"
-                    Background="Black"
-                    FontSize="16"
-                    FontWeight="Bold"
-                    Foreground="#FF61B3D6"
-                    Text="New Yourk"
-                    TextAlignment="Left" />
-            </DockPanel>
-
-            <DockPanel
+            </DockPanel.Background>
+            <Label
+                Width="100"
+                Height="25"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Background="Black">
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Content="id23892938048"
+                FontFamily="Verdana"
+                FontSize="10"
+                Foreground="#FF00CAFF">
+                <Label.LayoutTransform>
+                    <RotateTransform Angle="270" />
+                </Label.LayoutTransform>
+            </Label>
+            <Image Width="35" Height="35" />
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <StackPanel Margin="0,0,10,0">
+                <DockPanel Margin="0,10" HorizontalAlignment="Center">
+                    <TextBlock
+                        Width="200"
+                        Padding="5"
+                        Background="Black"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#FF61B3D6"
+                        Text="Moscow"
+                        TextAlignment="Right" />
 
                     <Label
-                        Width="130"
-                        HorizontalContentAlignment="Left"
-                        Content="Вылет"
-                        FontSize="13"
+                        Height="25"
+                        Padding="0"
+                        Content=" —&gt; "
+                        FontSize="18"
                         FontWeight="Bold"
-                        Foreground="#FFB1B1B1" />
+                        Foreground="#FF00B3FF" />
 
                     <TextBlock
-                        Width="130"
+                        Width="200"
+                        Padding="5"
+                        Background="Black"
                         FontSize="16"
-                        Foreground="#FF00B3FF"
-                        Text="12.12.2023 17:40"
-                        TextAlignment="Left" />
-                </StackPanel>
-
-                <StackPanel Margin="10,0,0,0">
-
-                    <Label
-                        Width="130"
-                        HorizontalContentAlignment="Left"
-                        Content="Прилёт"
-                        FontSize="13"
                         FontWeight="Bold"
-                        Foreground="#FFB1B1B1" />
-
-                    <TextBlock
-                        Width="130"
-                        FontSize="16"
-                        Foreground="#FF00B3FF"
-                        Text="13.12.2023 17:40"
+                        Foreground="#FF61B3D6"
+                        Text="New York"
                         TextAlignment="Left" />
-                </StackPanel>
-            </DockPanel>
+                </DockPanel>
 
-            <DockPanel
-                Margin="0,20"
-                HorizontalAlignment="Center"
-                Background="Black">
-
-                <Label
-                    Width="50"
-                    Padding="0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Top"
-                    Content="Цена: "
-                    FontSize="13"
-                    FontWeight="Bold"
-                    Foreground="#FFB1B1B1" />
-
-                <TextBlock
-                    Width="75"
-                    Padding="0"
+                <DockPanel
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="13"
-                    FontWeight="Bold"
-                    Foreground="#FF00B3FF"
-                    Text="7000"
-                    TextAlignment="Right" />
+                    Background="Black">
 
-                <Label
-                    Width="130"
-                    Margin="10,0,0,0"
-                    Padding="0"
-                    HorizontalContentAlignment="Left"
-                    Content="₽"
-                    FontSize="16"
-                    FontWeight="Bold"
-                    Foreground="White" />
-            </DockPanel>
-        </StackPanel>
+                    <StackPanel Margin="0,0,10,0">
+
+                        <Label
+                            Width="130"
+                            HorizontalContentAlignment="Left"
+                            Content="Вылет"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Foreground="#FFB1B1B1" />
+
+                        <TextBlock
+                            Width="130"
+                            FontSize="16"
+                            Foreground="#FF00B3FF"
+                            Text="12.12.2023 17:40"
+                            TextAlignment="Left" />
+                    </StackPanel>
+
+                    <StackPanel Margin="10,0,0,0">
+
+                        <Label
+                            Width="130"
+                            HorizontalContentAlignment="Left"
+                            Content="Прилёт"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Foreground="#FFB1B1B1" />
+
+                        <TextBlock
+                            Width="130"
+                            FontSize="16"
+                            Foreground="#FF00B3FF"
+                            Text="13.12.2023 17:40"
+                            TextAlignment="Left" />
+                    </StackPanel>
+                </DockPanel>
+
+                <DockPanel
+                    Margin="0,20"
+                    HorizontalAlignment="Center"
+                    Background="Black">
+
+                    <Label
+                        Width="50"
+                        Padding="0"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Top"
+                        Content="Цена: "
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Foreground="#FFB1B1B1" />
+
+                    <TextBlock
+                        Width="75"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Foreground="#FF00B3FF"
+                        Text="7000"
+                        TextAlignment="Right" />
+
+                    <Label
+                        Width="130"
+                        Margin="10,0,0,0"
+                        Padding="0"
+                        HorizontalContentAlignment="Left"
+                        Content="₽"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="White" />
+                </DockPanel>
+
+            </StackPanel>
+
+        </DockPanel>
     </Grid>
-</Page>
+</UserControl>

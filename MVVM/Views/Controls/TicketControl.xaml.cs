@@ -8,7 +8,7 @@ namespace Journey.MVVM.Views.Controls
     /// <summary>
     /// Логика взаимодействия для TicketControl.xaml
     /// </summary>
-    public partial class TicketControl : Page
+    public partial class TicketControl : UserControl
     {
         public TicketControl()
         {

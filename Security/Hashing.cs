@@ -25,7 +25,7 @@ namespace Journey.Security
                 return false;
             }
 
-            var pwd = GetHash(password);
+            byte[] pwd = GetHash(password);
             Users? user = null;
             using (ApplicationContext db = new())
             {
@@ -38,7 +38,9 @@ namespace Journey.Security
                 return true;
             }
             else
+            {
                 return false;
+            }
         }
     }
 }

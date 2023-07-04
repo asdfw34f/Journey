@@ -1,6 +1,6 @@
 ﻿namespace Journey.MVVM.ViewModels.Controls
 {
-    class RedactionProfileViewModel
+    internal class RedactionProfileViewModel
     {
 
     }

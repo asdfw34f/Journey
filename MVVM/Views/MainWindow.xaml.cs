@@ -1,7 +1,9 @@
 ﻿// This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
+using Journey.Data.GetData;
 using Journey.MVVM.ViewModels;
+using Journey.MVVM.Views.Pages;
 using System.Windows;
 
 namespace Journey.MVVM.Views
@@ -11,7 +13,7 @@ namespace Journey.MVVM.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel vm;
+        private readonly MainViewModel vm;
 
         public MainWindow()
         {
@@ -36,5 +38,10 @@ namespace Journey.MVVM.Views
             vm.ExitCommand.Execute(null);
         }
 
+        private void BuyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GetTickets.GetFile();
+            list.Content = new TicketsPage();
+        }
     }
 }

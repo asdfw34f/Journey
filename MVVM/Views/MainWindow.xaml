@@ -92,6 +92,7 @@
                     FontStretch="UltraExpanded"
                     FontWeight="Bold"
                     IsEnabled="True"
+                    Click="BuyBtn_Click"
                     Style="{StaticResource ButtonTemplate}">
                     <Button.Content>
                         <TextBlock
@@ -109,8 +110,8 @@
             </DockPanel>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <Frame x:Name="list">
+        
+            <Frame Grid.Column="1" x:Name="list">
                 <Frame.Content>
                     <Page WindowTitle="Профиль">
                         <Page.Resources>
@@ -305,10 +306,10 @@
                                 <Frame HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                                     <Frame.Content>
                                         <Page
+                                            x:Name="profile"
                                             Margin="0,0,20,0"
                                             HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            x:Name="profile">
+                                            VerticalAlignment="Center">
 
                                             <Page.DataContext>
                                                 <vm:MainViewModel />
@@ -638,6 +639,5 @@
                     </Page>
                 </Frame.Content>
             </Frame>
-        </ScrollViewer>
     </Grid>
 </Window>

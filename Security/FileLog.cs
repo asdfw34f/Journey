@@ -30,7 +30,7 @@ namespace Journey.Security
             File.Delete(path.FullName);
         }
 
-        internal async Task WriteLogAsync(Users Login)
+        internal Task WriteLogAsync(Users Login)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Journey.Security
                     ex.Message,
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
-                
+
             }
             finally
             {
@@ -58,9 +58,11 @@ namespace Journey.Security
                 JsonSerializer.Serialize(f, Login);
                 Dispose(f);
             }
+
+            return Task.CompletedTask;
         }
 
-        internal Users ReadLog()
+        internal Users? ReadLog()
         {
             if (!CheckLogFile())
             {

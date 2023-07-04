@@ -66,11 +66,11 @@ namespace Journey.MVVM.ViewModels
                 return;
             }
 
-            Hashing hashing = new Hashing();
+            Hashing hashing = new();
 
             if (hashing.EqualsLog(Password).Result)
             {
-                Navigate navigate = new Navigate();
+                Navigate navigate = new();
                 await navigate.ToMainAsync();
             }
         }

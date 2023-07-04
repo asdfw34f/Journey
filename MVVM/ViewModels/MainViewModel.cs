@@ -6,8 +6,6 @@ using Journey.Infrastructure.Navigate;
 using Journey.MVVM.Base;
 using Journey.MVVM.Models.Tables;
 using Journey.Security;
-using System;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -59,10 +57,14 @@ namespace Journey.MVVM.ViewModels
         }
 
         public ICommand LoadedMyselfCommand { get; }
-        private bool CanLoadedMyself(object p) => true;
+        private bool CanLoadedMyself(object p)
+        {
+            return true;
+        }
+
         private void OnLoadedMyself(object p)
         {
-            Users users =  new FileLog().ReadLog();
+            Users users = new FileLog().ReadLog();
             Login = users.Email;
             Name = users.Name;
             Surname = users.Surname;
@@ -71,7 +73,11 @@ namespace Journey.MVVM.ViewModels
         }
 
         public ICommand ExitCommand { get; }
-        private bool CanExit(object p) => true;
+        private bool CanExit(object p)
+        {
+            return true;
+        }
+
         private async void OnExit(object p)
         {
             new FileLog().FileDelete();

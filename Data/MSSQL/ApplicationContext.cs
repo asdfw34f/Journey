@@ -24,6 +24,6 @@ namespace Journey.Data.MSSQL
                            { _ = sqlOptions.EnableRetryOnFailure(); });
         }
 
-        
+
     }
 }

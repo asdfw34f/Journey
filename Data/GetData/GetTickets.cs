@@ -2,48 +2,35 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using Journey.MVVM.Models.Tables;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows;
 
-namespace Journey.Data
+namespace Journey.Data.GetData
 {
-    public class GetTickets
+    public static class GetTickets
     {
-        public async Task<List<Tickets>?> GetFile()
-        {
-            string file = Path.GetTempPath() + "avia.json";
-            try
-            {
-                 new WebClient().DownloadFileAsync(
-                     new Uri("https://raw.githubusercontent.com/Mirkitanov/jsonexmpl/main/avia.json"),
-                     file);
-            }
-            catch (WebException ex)
-            {
-                _ = MessageBox.Show(
-                    ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error
-                    );
-                return null;
-            }
+        public static List<Tickets>? Tickets { get; private set; }
 
-            return ReadFile(file);
+        private static int count = -1;
+
+        public static Tickets? GetNext()
+        {
+            count++;
+            return count < Tickets.Count ? Tickets[count] : null;
         }
 
-        private List<Tickets>? ReadFile(string path)
+        public static void GetFile()
         {
-            List<Tickets>? tickets;
 
-            using (FileStream file = new(path, FileMode.Open, FileAccess.Read))
+            string file_name = "D:\\ПРОЕКТЫ\\Journey\\bin\\Debug\\" + "\\avia\\avia.json";
+
+            if (File.Exists(file_name) == true)
             {
-                tickets = JsonSerializer.Deserialize<List<Tickets>>(file);
+                var list = JsonConvert.DeserializeObject<List<Tickets>>(File.ReadAllText(file_name));
+                if (list != null)
+                    Tickets = list;
             }
-
-            return tickets ?? null;
         }
     }
 }
